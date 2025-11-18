@@ -20,10 +20,14 @@ public class MindfulnessAudioManager : MonoBehaviour
             audioSource = this.gameObject.AddComponent<AudioSource>();
         }
 
-        StartCoroutine(StartSpeech());
     }
 
-    public IEnumerator StartSpeech()
+    public void StartSpeech()
+    {
+        StartCoroutine(StartSpeechCoroutine());
+    }
+
+    public IEnumerator StartSpeechCoroutine()
     {
         foreach (AudioClip clip in audioClips) {
             
