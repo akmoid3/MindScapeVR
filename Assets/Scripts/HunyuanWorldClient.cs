@@ -1,109 +1,117 @@
-﻿using GLTFast;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Networking;
-
-[System.Serializable]
-public class SceneGenerationRequest
-{
-    public string prompt;
-    public string negative_prompt = "";
-    public List<string> labels_fg1 = new List<string>();
-    public List<string> labels_fg2 = new List<string>();
-    public string classes = "outdoor";
-    public int seed = 42;
-    public bool export_drc = false;
-}
-
-[System.Serializable]
-public class GLBFile
-{
-    public string filename;
-    public string download_url;
-    public int size;
-}
-
-[System.Serializable]
-public class SceneGenerationResponse
-{
-    public bool success;
-    public string job_id;
-    public string download_url;
-    public List<GLBFile> glb_files;
-}
+using UnityEngine.UI;
+using Newtonsoft.Json;
+using TMPro;
+using GLTFast;
 
 public class HunyuanWorldClient : MonoBehaviour
 {
     [Header("Server Settings")]
     [SerializeField] private string serverUrl = "http://localhost:5000";
-    [SerializeField] private int downloadTimeout = 300; // 5 minutes for large files
 
-    [Header("Generation Settings")]
-    [SerializeField] private string prompt = "A beautiful outdoor scene";
+    [Header("UI References")]
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private Button generateButton;
+    [SerializeField] private TMP_Text buttonText;
+
+    [Header("Scene Settings")]
+    [SerializeField] private Material skyboxMaterial;
+    [SerializeField] private Material sceneMaterial;
+
+    [Header("Generation Parameters")]
     [SerializeField] private string negativePrompt = "";
     [SerializeField] private string sceneClass = "outdoor";
     [SerializeField] private int seed = 42;
 
-    [Header("Model Loading")]
-    [SerializeField] private Transform modelParent;
-    [SerializeField] private bool autoLoadModel = true;
-    [SerializeField] private bool loadSkybox = true;
-    [SerializeField] private bool cleanupTempFiles = true;
-
-    [Header("Skybox Settings")]
-    [SerializeField] private Material skyboxMaterial;
-    [SerializeField] private bool createNewSkyboxMaterial = true;
-
-    private string currentJobId;
-    private List<GameObject> loadedModels = new List<GameObject>();
-    private List<string> tempFiles = new List<string>();
+    private bool isGenerating = false;
     private Material originalSkybox;
+
+    [Serializable]
+    private class GenerateRequest
+    {
+        public string prompt;
+        public string negative_prompt;
+        public string classes;
+        public int seed;
+    }
+
+    [Serializable]
+    private class GenerateResponse
+    {
+        public bool success;
+        public string job_id;
+    }
 
     private void Start()
     {
         originalSkybox = RenderSettings.skybox;
 
-        if (createNewSkyboxMaterial && skyboxMaterial == null)
+        if (skyboxMaterial == null)
         {
             skyboxMaterial = new Material(Shader.Find("Skybox/Panoramic"));
             skyboxMaterial.SetFloat("_Exposure", 1.0f);
             skyboxMaterial.SetFloat("_Rotation", 0f);
         }
-    }
 
-    private void OnDestroy()
-    {
-        CleanupTempFiles();
+        if (generateButton != null)
+        {
+            generateButton.onClick.AddListener(() => GenerateScene());
+
+            if (buttonText == null)
+                buttonText = generateButton.GetComponentInChildren<TMP_Text>();
+        }
+
+        SetButtonState(false);
     }
 
     public void GenerateScene()
     {
-        StartCoroutine(GenerateSceneCoroutine());
+        if (isGenerating)
+            return;
+
+        if (!string.IsNullOrEmpty(inputField.text))
+        {
+            StartCoroutine(GenerateSceneCoroutine());
+        }
+        else
+        {
+            Debug.Log("Prompt is not valid");
+        }
+    }
+
+    private void SetButtonState(bool generating)
+    {
+        isGenerating = generating;
+
+        if (generateButton != null)
+            generateButton.interactable = !generating;
+
+        if (buttonText != null)
+            buttonText.text = generating ? "Generating..." : "Generate";
     }
 
     private IEnumerator GenerateSceneCoroutine()
     {
-        Debug.Log("🎨 Starting scene generation...");
+        SetButtonState(true);
 
-        SceneGenerationRequest request = new SceneGenerationRequest
+        GenerateRequest request = new GenerateRequest
         {
-            prompt = prompt,
+            prompt = inputField.text,
             negative_prompt = negativePrompt,
             classes = sceneClass,
             seed = seed
         };
 
-        string jsonData = JsonConvert.SerializeObject(request);
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+        string json = JsonConvert.SerializeObject(request);
+        byte[] body = System.Text.Encoding.UTF8.GetBytes(json);
 
         using (UnityWebRequest www = new UnityWebRequest(serverUrl + "/generate_scene", "POST"))
         {
-            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            www.uploadHandler = new UploadHandlerRaw(body);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
             www.timeout = 600;
@@ -112,45 +120,40 @@ public class HunyuanWorldClient : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"❌ Error: {www.error}");
-                Debug.LogError($"Response: {www.downloadHandler.text}");
+                Debug.LogError($"Generation failed: {www.error}");
+                SetButtonState(false);
                 yield break;
             }
 
-            Debug.Log("✅ Scene generation started successfully!");
-            SceneGenerationResponse response = JsonConvert.DeserializeObject<SceneGenerationResponse>(www.downloadHandler.text);
+            GenerateResponse response = JsonConvert.DeserializeObject<GenerateResponse>(www.downloadHandler.text);
+            string jobId = response.job_id;
 
-            currentJobId = response.job_id;
-            Debug.Log($"📋 Job ID: {currentJobId}");
-            if (autoLoadModel)
-            {
-                if (loadSkybox)
-                {
-                    yield return StartCoroutine(LoadSkyboxImage(currentJobId));
-                }
+            Debug.Log($"Scene generation started. Job ID: {jobId}");
 
-                yield return StartCoroutine(DownloadAndLoadGLB(currentJobId));
-            }
+            yield return StartCoroutine(DownloadAndLoadSkybox(jobId));
+
+            yield return StartCoroutine(DownloadAndLoadModel(jobId));
         }
+
+        inputField.text = "";
+        SetButtonState(false);
     }
 
-    private IEnumerator LoadSkyboxImage(string jobId)
+    private IEnumerator DownloadAndLoadSkybox(string jobId)
     {
         string skyboxUrl = $"{serverUrl}/api/file/{jobId}/sky_image_sr.png";
-        Debug.Log($"🌅 Downloading skybox from: {skyboxUrl}");
+        Debug.Log($"Downloading skybox...");
 
         using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(skyboxUrl))
         {
-            www.timeout = downloadTimeout;
+            www.timeout = 400;
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"❌ Error downloading skybox: {www.error}");
+                Debug.LogError($"Skybox download failed: {www.error}");
                 yield break;
             }
-
-            Debug.Log("✅ Skybox downloaded successfully!");
 
             Texture2D skyboxTexture = DownloadHandlerTexture.GetContent(www);
 
@@ -159,187 +162,82 @@ public class HunyuanWorldClient : MonoBehaviour
                 skyboxMaterial.SetTexture("_MainTex", skyboxTexture);
                 RenderSettings.skybox = skyboxMaterial;
                 DynamicGI.UpdateEnvironment();
-                Debug.Log("🌅 Skybox applied successfully!");
-            }
-            else
-            {
-                Debug.LogError("❌ Skybox material is null!");
+                Debug.Log("Skybox applied successfully!");
             }
         }
     }
 
-    private IEnumerator DownloadAndLoadGLB(string jobId)
+    private IEnumerator DownloadAndLoadModel(string jobId)
     {
-        string url = $"{serverUrl}/api/file/{jobId}/mesh_layer0.glb";
-        Debug.Log($"📥 Downloading GLB from: {url}");
-        string filename = "mesh_layer_0";
+        string modelUrl = $"{serverUrl}/api/file/{jobId}/mesh_layer0.glb";
+        Debug.Log($"Downloading model...");
 
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        using (UnityWebRequest www = UnityWebRequest.Get(modelUrl))
         {
-            www.timeout = downloadTimeout;
+            www.timeout = 400;
 
-            // Show progress for large files
             var operation = www.SendWebRequest();
             while (!operation.isDone)
             {
-                Debug.Log($"📥 Download progress: {www.downloadProgress * 100:F1}%");
+                Debug.Log($"Download progress: {www.downloadProgress * 100:F1}%");
                 yield return new WaitForSeconds(0.5f);
             }
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"❌ Error downloading GLB: {www.error}");
+                Debug.LogError($"Model download failed: {www.error}");
                 yield break;
             }
 
+            string folderPath = Path.Combine(Application.persistentDataPath, "Scenes");
+            Directory.CreateDirectory(folderPath);
+            string filePath = Path.Combine(folderPath, $"{jobId}_mesh.glb");
+            File.WriteAllBytes(filePath, www.downloadHandler.data);
 
-            // Save to persistent storage
-            string tempPath = Path.Combine(Application.persistentDataPath, $"{currentJobId}_{filename}");
+            GameObject container = new GameObject($"Scene_{jobId}");
 
-            try
+
+            container.transform.position = Vector3.zero;
+            container.transform.rotation = Quaternion.Euler(270f, 0f, 270f);
+            container.transform.localScale = Vector3.one;
+
+            GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
+
+            var task = gltfAsset.Load(filePath);
+            yield return new WaitUntil(() => task.IsCompleted);
+
+            if (task.Result)
             {
-                File.WriteAllBytes(tempPath, www.downloadHandler.data);
-                tempFiles.Add(tempPath);
-                Debug.Log($"💾 Saved to: {tempPath}");
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"❌ Failed to save GLB: {e.Message}");
-                yield break;
-            }
+                Debug.Log($"Scene loaded successfully from: {filePath}");
 
-            // Load GLB with error handling
-            yield return StartCoroutine(LoadGLBFromFile(tempPath, filename));
-        }
-    }
-
-    private IEnumerator LoadGLBFromFile(string filePath, string filename)
-    {
-        Debug.Log($"📦 Loading GLB: {filename}");
-
-        GameObject container = new GameObject($"Scene_{filename}");
-
-        if (modelParent != null)
-        {
-            container.transform.SetParent(modelParent);
-        }
-
-        container.transform.localPosition = Vector3.zero;
-        container.transform.localRotation = Quaternion.identity;
-        container.transform.localScale = Vector3.one;
-
-        GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
-
-        // Load with callback to check success
-        bool loadSuccess = false;
-        string loadError = null;
-
-        var task = gltfAsset.Load(filePath);
-
-        while (!task.IsCompleted)
-        {
-            yield return null;
-        }
-
-        if (task.IsFaulted || task.Exception != null)
-        {
-            loadError = task.Exception?.ToString() ?? "Unknown error";
-            Debug.LogError($"❌ GLB load failed: {loadError}");
-            Destroy(container);
-            yield break;
-        }
-
-        loadSuccess = task.Result;
-
-        if (loadSuccess)
-        {
-            loadedModels.Add(container);
-            Debug.Log($"✅ GLB loaded successfully: {filename}");
-        }
-        else
-        {
-            Debug.LogError($"❌ GLB load returned false: {filename}");
-            Destroy(container);
-        }
-    }
-
-    public void LoadSceneFromJobId(string jobId, bool withSkybox = true)
-    {
-        StartCoroutine(LoadSceneFromJobIdCoroutine(jobId, withSkybox));
-    }
-
-    private IEnumerator LoadSceneFromJobIdCoroutine(string jobId, bool withSkybox)
-    {
-        currentJobId = jobId;
-        ClearLoadedModels();
-
-        if (withSkybox)
-        {
-            yield return StartCoroutine(LoadSkyboxImage(jobId));
-        }
-
-        string meshUrl = $"{serverUrl}/api/file/{jobId}/mesh_layer0.glb";
-
-        GameObject container = new GameObject($"Scene_{jobId}");
-        if (modelParent != null)
-        {
-            container.transform.SetParent(modelParent);
-        }
-        container.transform.localPosition = Vector3.zero;
-        container.transform.localRotation = Quaternion.identity;
-        container.transform.localScale = Vector3.one;
-
-        GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
-
-        var task = gltfAsset.Load(meshUrl);
-        yield return new WaitUntil(() => task.IsCompleted);
-
-        if (task.Result)
-        {
-            loadedModels.Add(container);
-            Debug.Log($"✅ Scene loaded from job: {jobId}");
-        }
-        else
-        {
-            Debug.LogError($"❌ Failed to load scene from job: {jobId}");
-            Destroy(container);
-        }
-    }
-
-    public void ClearLoadedModels()
-    {
-        Debug.Log("🧹 Clearing loaded models...");
-
-        foreach (var model in loadedModels)
-        {
-            if (model != null)
-                Destroy(model);
-        }
-        loadedModels.Clear();
-    }
-
-    private void CleanupTempFiles()
-    {
-        if (!cleanupTempFiles) return;
-
-        Debug.Log($"🧹 Cleaning up {tempFiles.Count} temporary files...");
-
-        foreach (string filePath in tempFiles)
-        {
-            try
-            {
-                if (File.Exists(filePath))
+                if (sceneMaterial != null)
                 {
-                    File.Delete(filePath);
+                    ApplyMaterialToScene(container);
                 }
             }
-            catch (Exception e)
+            else
             {
-                Debug.LogWarning($"⚠️ Failed to delete temp file {filePath}: {e.Message}");
+                Debug.LogError($"Failed to load scene");
+                Destroy(container);
             }
         }
+    }
 
-        tempFiles.Clear();
+    private void ApplyMaterialToScene(GameObject sceneRoot)
+    {
+        MeshRenderer[] renderers = sceneRoot.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in renderers)
+        {
+            Material[] materials = new Material[renderer.sharedMaterials.Length];
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = sceneMaterial;
+            }
+            renderer.sharedMaterials = materials;
+        }
+
+        Debug.Log($"Applied custom material to {renderers.Length} renderers");
     }
 
     public void RestoreOriginalSkybox()
@@ -348,47 +246,8 @@ public class HunyuanWorldClient : MonoBehaviour
         {
             RenderSettings.skybox = originalSkybox;
             DynamicGI.UpdateEnvironment();
-            Debug.Log("🌅 Original skybox restored");
+            Debug.Log("Original skybox restored");
         }
     }
 
-    public void GenerateSceneWithPrompt(string customPrompt, string customClass = "outdoor", int customSeed = 42)
-    {
-        prompt = customPrompt;
-        sceneClass = customClass;
-        seed = customSeed;
-        GenerateScene();
-    }
-
-#if UNITY_EDITOR
-    [ContextMenu("Generate Scene")]
-    private void TestGenerate()
-    {
-        GenerateScene();
-    }
-
-    [ContextMenu("Load Test Scene")]
-    private void TestLoadScene()
-    {
-        LoadSceneFromJobId("ef7d0667-e40e-4af3-8b28-76f6d19d22b3", true);
-    }
-
-    [ContextMenu("Clear Models")]
-    private void TestClear()
-    {
-        ClearLoadedModels();
-    }
-
-    [ContextMenu("Restore Skybox")]
-    private void TestRestoreSkybox()
-    {
-        RestoreOriginalSkybox();
-    }
-
-    [ContextMenu("Cleanup Temp Files")]
-    private void TestCleanup()
-    {
-        CleanupTempFiles();
-    }
-#endif
 }

@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
         LoadScene("Beach");
     }
 
+    public void LoadGenerateScene()
+    {
+        LoadScene("GenerateScene");
+    }
+
     public void LoadMainMenu()
     {
         LoadScene("MainMenu");
