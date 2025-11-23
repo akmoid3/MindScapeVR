@@ -66,7 +66,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfac1007244ca54f93b1c3e1df22d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreeSceneCamera
-  moveSpeed: 5
+  moveSpeed: 1
   boostMultiplier: 4
   acceleration: 12
   damping: 10
