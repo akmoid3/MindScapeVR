@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FreeCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FreeCamera.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/AndroidXR/AndroidXRSettingsInitializer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/AndroidXR/AndroidXRSettingsInitializer" afterDir="false" />
-    </list>
+    <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +118,7 @@
       <updated>1763832626736</updated>
       <workItem from="1763832629334" duration="645000" />
       <workItem from="1763833448771" duration="595000" />
-      <workItem from="1763834198119" duration="11429000" />
+      <workItem from="1763834198119" duration="11556000" />
     </task>
     <servers />
   </component>

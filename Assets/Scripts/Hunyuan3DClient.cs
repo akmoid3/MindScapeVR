@@ -142,6 +142,16 @@ public class Hunyuan3DClient : MonoBehaviour
                 File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
 
                 GameObject container = new GameObject($"Model_{meshFile.filename}");
+                
+                int selectableLayer = LayerMask.NameToLayer("SelectableObjects");
+                if (selectableLayer == -1)
+                {
+                    Debug.LogError("Layer 'SelectableObjects' doesnt exists.");
+                }
+                else
+                {
+                    container.layer = selectableLayer;
+                }
                 if (modelParent != null)
                     container.transform.SetParent(modelParent);
                 container.transform.localScale = Vector3.one * modelScale;
