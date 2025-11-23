@@ -28,4 +28,15 @@ public class MainMenu : MonoBehaviour
     {
         LoadScene("MainMenu");
     }
+    
+    
+    public void Quit()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
 }
