@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class RandomizeAudio : MonoBehaviour
 {
-    [SerializeField] private List<AudioSource> audioSources;
+    [SerializeField] private float minDelay = 15f;
+    [SerializeField] private float maxDelay = 30f;
+    [SerializeField] private AudioSource source;
+    private MeshRenderer meshRenderer;
+    private Collider collider;
 
-    [SerializeField] private float minDelay = 7f;
-    [SerializeField] private float maxDelay = 15f;
 
 
     private void Start()
     {
-        foreach (AudioSource source in audioSources) {
+        source = GetComponent<AudioSource>();
+        if(source != null )
             StartCoroutine(StartSoundRandomly(source));
-        }
+
+        if (meshRenderer == null)
+            meshRenderer = GetComponentInChildren<MeshRenderer>();
+
+        if (collider == null)
+            collider = GetComponent<Collider>();
+
+    }
+
+    public void EnableMeshAndCollider(bool isEnabled)
+    {
+        if(meshRenderer)
+            meshRenderer.enabled = isEnabled;
+        if(collider)
+            collider.enabled = isEnabled;
     }
 
 
@@ -27,4 +44,6 @@ public class RandomizeAudio : MonoBehaviour
             audio.Play();
         }
     }
+
+
 }

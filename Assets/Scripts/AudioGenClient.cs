@@ -9,11 +9,14 @@ using TMPro;
 
 public class AudioGenClient : MonoBehaviour
 {
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private string serverUrl = "http://localhost:8081";
     [SerializeField] private bool saveToFile = true;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button generateButton;
     [SerializeField] private TMP_Text buttonText;
+
+    [SerializeField] private GameObject audioPrefab;
 
     private bool isGenerating = false;
 
@@ -159,13 +162,24 @@ public class AudioGenClient : MonoBehaviour
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(downloadWww);
                 if (clip != null)
                 {
-                    GameObject go = new GameObject("GeneratedAudio");
-                    AudioSource audioSource = go.AddComponent<AudioSource>();
+                    GameObject go = Instantiate(audioPrefab);
+                    AudioSource audioSource = go.GetComponent<AudioSource>();
+                    if(audioSource == null)
+                    {
+                        audioSource = go.AddComponent<AudioSource>();
+                    }
                     audioSource.clip = clip;
                     audioSource.spatialBlend = 1f;
                     audioSource.minDistance = 1f;
                     audioSource.maxDistance = 20f;
-                    audioSource.Play();
+                    //audioSource.Play();
+
+                    if (levelManager)
+                    {
+                        levelManager.AddSoundToList(go);
+                        LookAtCamera lookAtCamera = go.GetComponent<LookAtCamera>();
+                        lookAtCamera.Cam(levelManager.GetFreeCam());
+                    }
                 }
             }
 

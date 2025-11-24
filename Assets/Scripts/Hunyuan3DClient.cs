@@ -142,6 +142,7 @@ public class Hunyuan3DClient : MonoBehaviour
                 File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
 
                 GameObject container = new GameObject($"Model_{meshFile.filename}");
+                container.AddComponent<BoxCollider>();
                 
                 int selectableLayer = LayerMask.NameToLayer("SelectableObjects");
                 if (selectableLayer == -1)
@@ -158,7 +159,7 @@ public class Hunyuan3DClient : MonoBehaviour
 
                 var gltf = container.AddComponent<GLTFast.GltfAsset>();
                 gltf.Url = "file://" + filePath;
-
+                
                 Debug.Log($"Model loaded from: {filePath}");
             }
         }

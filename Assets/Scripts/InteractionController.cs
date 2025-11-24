@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InteractionController : MonoBehaviour
@@ -28,6 +29,10 @@ public class InteractionController : MonoBehaviour
 
     private GameObject selectedObject;
     private Vector3 targetDragPosition;
+
+    [SerializeField] private GameObject audioUI;
+    [SerializeField] private GameObject deleteUI;
+
 
     private void Awake()
     {
@@ -61,6 +66,10 @@ public class InteractionController : MonoBehaviour
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        if(audioUI)
+            audioUI.SetActive(false);
+        if(deleteUI) 
+            deleteUI.SetActive(false);
     }
 
     private void Update()
@@ -72,6 +81,13 @@ public class InteractionController : MonoBehaviour
 
     private void OnSelect()
     {
+        // Non conta i click su UI
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Click sulla UI, ignoro la selezione 3D");
+            return;
+        }
+
         if (mainCamera == null) return;
 
         Ray ray = mainCamera.ScreenPointToRay(pointerPosition);
@@ -82,16 +98,33 @@ public class InteractionController : MonoBehaviour
 
             float dist = Vector3.Distance(mainCamera.transform.position, hit.point);
             dragDistance = dist;
+
+            if (selectedObject.CompareTag("Audio") && audioUI)
+            {
+                audioUI.SetActive(true);
+            }
+            else
+            {
+                audioUI.SetActive(false);
+            }
+            deleteUI.SetActive(true);
         }
         else
         {
             selectedObject = null;
+            audioUI.SetActive(false);
+            deleteUI.SetActive(false);
+
             Debug.Log("Click ma nessun oggetto selezionabile");
         }
     }
 
     private void HandleDragging()
     {
+        // Non conta i click su UI
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (!dragging || selectedObject == null || mainCamera == null)
             return;
 
@@ -130,5 +163,30 @@ public class InteractionController : MonoBehaviour
         s.z = Mathf.Clamp(s.z, minScale, maxScale);
 
         selectedObject.transform.localScale = s;
+    }
+
+
+    public void DestroySelectedObject()
+    {
+        if(selectedObject == null) return;
+
+        if (selectedObject.tag == "Audio")
+        {
+            LevelManager levelManager = GetComponent<LevelManager>();
+            if(levelManager != null)
+            {
+                levelManager.RemoveSoundFromList(selectedObject);
+            }
+        }
+        DestroyImmediate(selectedObject);
+        selectedObject = null;
+    }
+
+    public void PlayAudio()
+    {
+        if (selectedObject == null) return;
+        AudioSource audioSource = selectedObject.GetComponent<AudioSource>();
+        if (audioSource == null) return;
+        audioSource.Play();
     }
 }

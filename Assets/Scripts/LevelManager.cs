@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -11,8 +13,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MindfulnessAudioManager speechManager;
     [SerializeField] private GameObject mainMenuButtonsUI;
     [SerializeField] private GameObject exitPlayModeButton;
+    [SerializeField] private List<GameObject> audioInSceneList;
         
-
     private void Start()
     {
         
@@ -46,7 +48,8 @@ public class LevelManager : MonoBehaviour
                 Cursor.visible = true;
                 
                 mainMenuButtonsUI.SetActive(false);
-                
+                EnableAudioIcons(true);
+
                 break;
 
             case State.Playing:
@@ -62,8 +65,10 @@ public class LevelManager : MonoBehaviour
                 editorUI.SetActive(false);
                 speech.SetActive(true);
                 mainMenuButtonsUI.SetActive(false);
-                
-                
+                EnableAudioIcons(false);
+
+
+
                 break;
             
             case State.MainMenu:
@@ -77,7 +82,8 @@ public class LevelManager : MonoBehaviour
                     speechManager.StopSpeech();
                 speech.SetActive(false);
                 mainMenuButtonsUI.SetActive(true);
-                
+                EnableAudioIcons(false);
+
                 break;
         }
     }
@@ -95,5 +101,40 @@ public class LevelManager : MonoBehaviour
     public void OnMenuButtonPressed()
     {
         StateManager.Instance.UpdateState(State.MainMenu);
+    }
+
+    public void AddSoundToList(GameObject soundObject)
+    {
+        if(soundObject == null) return;
+        if (audioInSceneList == null) return;
+
+        audioInSceneList.Add(soundObject);
+    }
+
+    public void RemoveSoundFromList(GameObject soundObject)
+    {
+        if (soundObject == null) return;
+        if (audioInSceneList == null) return;
+
+        audioInSceneList.Remove(soundObject);
+    }
+
+    public void EnableAudioIcons(bool enable)
+    {
+        if(audioInSceneList.Count==0) return;
+
+        foreach (GameObject soundObject in audioInSceneList)
+        {
+            RandomizeAudio randomizeAudio = soundObject.GetComponent<RandomizeAudio>();
+            if(randomizeAudio != null)
+            {
+                randomizeAudio.EnableMeshAndCollider(enable);
+                randomizeAudio.enabled = !enable;
+            }
+        }
+    }
+    public GameObject GetFreeCam()
+    {
+        return freeCamObject;
     }
 }
