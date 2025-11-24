@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9001451426234574656}
   - component: {fileID: 9058722962833152793}
+  - component: {fileID: 334812204279698441}
+  - component: {fileID: 4927479832127478372}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -51,3 +53,42 @@ MonoBehaviour:
   rotatingCamera: {fileID: 0}
   speechManager: {fileID: 0}
   mainMenuButtonsUI: {fileID: 0}
+  exitPlayModeButton: {fileID: 0}
+--- !u!114 &334812204279698441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878145721315171505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc17bf14bca89543be8dbbee8ec9db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionController
+  mainCamera: {fileID: 0}
+  selectableLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dragDistance: 5
+  dragSmooth: 100
+  rotationSpeed: 120
+  scaleSpeed: 0.1
+  minScale: 0.01
+  maxScale: 10
+--- !u!114 &4927479832127478372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878145721315171505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0b5dc42a867d84da3c9f95a2665b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLightUIController
+  targetLight: {fileID: 0}
+  intensitySlider: {fileID: 0}
+  yRotSlider: {fileID: 0}
+  xRotSlider: {fileID: 0}

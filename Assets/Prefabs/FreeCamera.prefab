@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfac1007244ca54f93b1c3e1df22d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreeSceneCamera
-  moveSpeed: 1
+  moveSpeed: 5
   boostMultiplier: 4
   acceleration: 12
   damping: 10
