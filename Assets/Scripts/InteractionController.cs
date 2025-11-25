@@ -45,17 +45,29 @@ public class InteractionController : MonoBehaviour
 
         controls.Builder.Select.started += _ => OnSelect();
 
-        controls.Builder.Drag.started  += _ => dragging = true;
-        controls.Builder.Drag.canceled += _ => dragging = false;
+        controls.Builder.Drag.started += _ =>
+        {
+            Debug.Log("Drag STARTED");
+        };
+        controls.Builder.Drag.performed += _ =>
+        {
+            dragging = true;
+
+        };
+        controls.Builder.Drag.canceled += _ =>
+        {
+            Debug.Log("Drag CANCELED");
+            dragging = false;
+        };
 
         controls.Builder.Rotate.performed += ctx =>
             rotateInput = ctx.ReadValue<float>();
-        controls.Builder.Rotate.canceled  += _ =>
+        controls.Builder.Rotate.canceled += _ =>
             rotateInput = 0f;
 
         controls.Builder.Scale.performed += ctx =>
             scaleInput = ctx.ReadValue<float>();
-        controls.Builder.Scale.canceled  += _ =>
+        controls.Builder.Scale.canceled += _ =>
             scaleInput = 0f;
     }
 
@@ -177,7 +189,9 @@ public class InteractionController : MonoBehaviour
             {
                 levelManager.RemoveSoundFromList(selectedObject);
             }
+            audioUI.SetActive(false);
         }
+        deleteUI.SetActive(false);
         DestroyImmediate(selectedObject);
         selectedObject = null;
     }

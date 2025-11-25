@@ -725,7 +725,7 @@ public partial class @CameraController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""afcc2410-b2a0-4395-b259-50216b9e3ed9"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.2)"",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Drag"",
