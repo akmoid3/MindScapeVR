@@ -128,8 +128,8 @@ public class LevelManager : MonoBehaviour
             RandomizeAudio randomizeAudio = soundObject.GetComponent<RandomizeAudio>();
             if(randomizeAudio != null)
             {
-                randomizeAudio.EnableMeshAndCollider(enable);
                 randomizeAudio.enabled = !enable;
+                randomizeAudio.EnableMeshAndCollider(enable);
             }
         }
     }

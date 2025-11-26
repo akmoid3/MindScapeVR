@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c72564700722a1419baba5e7c4cff2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioGenClient
+  levelManager: {fileID: 0}
   serverUrl: http://localhost:8081
   saveToFile: 1
   inputField: {fileID: 0}
   generateButton: {fileID: 0}
   buttonText: {fileID: 0}
+  audioPrefab: {fileID: 1106567387334408393, guid: 2718996c490761b4ab8f83b694f8a9c3, type: 3}

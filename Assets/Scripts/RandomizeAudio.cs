@@ -19,7 +19,7 @@ public class RandomizeAudio : MonoBehaviour
             StartCoroutine(StartSoundRandomly(source));
 
         if (meshRenderer == null)
-            meshRenderer = GetComponentInChildren<MeshRenderer>();
+            meshRenderer = GetComponent<MeshRenderer>();
 
         if (collider == null)
             collider = GetComponent<Collider>();
