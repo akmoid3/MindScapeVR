@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="" />
+    <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnvironmentMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnvironmentMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Performance URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Performance URP Config.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Quality URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Quality URP Config.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VertexColor.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VertexColor.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +24,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@bc6f352be672/ShaderLibrary/Input.hlsl" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -119,12 +129,15 @@
       <workItem from="1763832629334" duration="645000" />
       <workItem from="1763833448771" duration="595000" />
       <workItem from="1763834198119" duration="11556000" />
+      <workItem from="1764129834191" duration="368000" />
+      <workItem from="1764165138625" duration="10778000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

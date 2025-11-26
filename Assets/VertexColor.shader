@@ -2,79 +2,81 @@ Shader "Custom/VertexColorVR"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
         _Color ("Tint Color", Color) = (1,1,1,1)
-        [Toggle] _UseVertexColor ("Use Vertex Color", Float) = 1
+        _ShadowIntensity ("Shadow Intensity", Range(0, 1)) = 1
     }
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" "RenderPipeline"="UniversalPipeline"  }
         LOD 100
-        Cull Front   
+        Cull Off
 
         Pass
         {
-            CGPROGRAM
+        
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma multi_compile_fog
             #pragma multi_compile_instancing
-            #pragma multi_compile _ STEREO_INSTANCING_ON
-
-            #include "UnityCG.cginc"
-
-            struct appdata
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile _ _SHADOWS_SOFT
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            struct Attributes
             {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
+                float4 positionOS : POSITION;
                 float4 color : COLOR;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
-            struct v2f
+            struct Varyings
             {
-                float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
-                float4 vertex : SV_POSITION;
+                float4 positionCS : SV_POSITION;
                 float4 color : COLOR;
-
+                float3 positionWS : TEXCOORD1; 
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-            float4 _Color;
-            float _UseVertexColor;
 
-            v2f vert (appdata v)
+            CBUFFER_START(UnityPerMaterial)
+                float4 _Color;
+                float _ShadowIntensity;
+            CBUFFER_END
+
+            Varyings vert (Attributes IN)
             {
-                v2f o;
+                Varyings OUT;
 
-                UNITY_SETUP_INSTANCE_ID(v);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                o.color = v.color;
-
-                UNITY_TRANSFER_FOG(o, o.vertex);
-                return o;
+                UNITY_SETUP_INSTANCE_ID(IN);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
+                
+                VertexPositionInputs posInputs = GetVertexPositionInputs(IN.positionOS.xyz);
+                              
+                OUT.positionCS = posInputs.positionCS;
+                OUT.positionWS = posInputs.positionWS;        
+                OUT.color = IN.color;
+              
+                return OUT;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            half4 frag (Varyings IN) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+                half4 col = _Color;
 
-                if (_UseVertexColor > 0.5)
-                    col *= i.color;
+                col *= IN.color;
 
-                UNITY_APPLY_FOG(i.fogCoord, col);
+                float4 shadowCoord = TransformWorldToShadowCoord(IN.positionWS);
+                Light mainLight = GetMainLight(shadowCoord);
+                half shadow = mainLight.shadowAttenuation;
+                
+                col.rgb *= lerp(1.0 - _ShadowIntensity, 1.0, shadow);
+
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 
-    FallBack "Diffuse"
+    FallBack Off
 }
