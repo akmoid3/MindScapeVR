@@ -199,7 +199,7 @@ public class HunyuanWorldClient : MonoBehaviour
 
             container.transform.position = Vector3.zero;
             container.transform.rotation = Quaternion.Euler(270f, 0f, 270f);
-            container.transform.localScale = Vector3.one;
+            container.transform.localScale = new Vector3(15f, 15f, 15f);
 
             GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
 

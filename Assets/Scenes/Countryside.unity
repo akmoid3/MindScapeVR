@@ -354,6 +354,18 @@ PrefabInstance:
       value: Countryside
       objectReference: {fileID: 0}
     - target: {fileID: 3447742079981357586, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447742079981357586, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447742079981357586, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447742079981357586, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -393,6 +405,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 3447742079981357586, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7596054609887090473, guid: bfd84508ed7aad14d82b5943fe530d12, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -413,6 +429,10 @@ PrefabInstance:
     - target: {fileID: 3121196793996759149, guid: a9f955289575487498a78358a0ce78ea, type: 3}
       propertyPath: m_Name
       value: FreeCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121196793996759149, guid: a9f955289575487498a78358a0ce78ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5406974377081586905, guid: a9f955289575487498a78358a0ce78ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,7 +535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -575,6 +595,10 @@ PrefabInstance:
     - target: {fileID: 3599487452700325680, guid: 48bfeac825c8e6d41ac07013a33aa569, type: 3}
       propertyPath: m_Name
       value: RotatingCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599487452700325680, guid: 48bfeac825c8e6d41ac07013a33aa569, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6288255839335759675, guid: 48bfeac825c8e6d41ac07013a33aa569, type: 3}
       propertyPath: m_LocalPosition.x
