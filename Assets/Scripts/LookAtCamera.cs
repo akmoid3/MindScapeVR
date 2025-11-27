@@ -8,7 +8,6 @@ public class LookAtCamera : MonoBehaviour
     void Update()
     {
         if (cam == null) return;
-
         transform.LookAt(cam.transform);
     }
 

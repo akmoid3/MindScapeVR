@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneLightUIController : MonoBehaviour
 {
@@ -11,6 +13,39 @@ public class SceneLightUIController : MonoBehaviour
     public Slider yRotSlider;          
     public Slider xRotSlider;       
 
+    [Header("UI Texts (TMP)")]
+    public TMP_Text intensityValueText;
+    public TMP_Text yRotValueText;
+    public TMP_Text xRotValueText;
+    
+    
+    public float length = 2f;
+
+    private LineRenderer lr;
+
+    private void Awake()
+    {
+        lr = this.gameObject.AddComponent<LineRenderer>();
+        lr.positionCount = 2;
+        lr.widthMultiplier = 0.02f;
+
+        lr.material = new Material(Shader.Find("Sprites/Default"));
+        lr.startColor = Color.yellow;
+        lr.endColor = Color.yellow;
+    }
+
+    private void Update()
+    {
+        if (targetLight == null) return;
+
+        if (StateManager.Instance.CurrentState != State.Editing) return;
+        Vector3 start = targetLight.transform.position;
+        Vector3 end = start + targetLight.transform.forward * length;
+
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+    }
+    
     private void Start()
     {
         if (targetLight == null)
@@ -50,6 +85,16 @@ public class SceneLightUIController : MonoBehaviour
                 xRotSlider.onValueChanged.AddListener(OnXRotChanged);
             }
         }
+        
+        if (intensityValueText != null)
+            intensityValueText.text = intensitySlider.value.ToString("0.00");
+
+        if (yRotValueText != null)
+            yRotValueText.text = yRotSlider.value.ToString("0");
+
+        if (xRotValueText != null)
+            xRotValueText.text = xRotSlider.value.ToString("0");
+
     }
 
     private void OnDestroy()
@@ -66,6 +111,9 @@ public class SceneLightUIController : MonoBehaviour
     {
         if (targetLight == null) return;
         targetLight.intensity = value;
+        
+        if (intensityValueText != null)
+            intensityValueText.text = value.ToString("0.00");
     }
 
     private void OnYRotChanged(float value)
@@ -75,7 +123,11 @@ public class SceneLightUIController : MonoBehaviour
         Vector3 euler = targetLight.transform.rotation.eulerAngles;
         euler.y = value;
         targetLight.transform.rotation = Quaternion.Euler(euler);
+
+        if (yRotValueText != null)
+            yRotValueText.text = value.ToString("0");
     }
+
 
     private void OnXRotChanged(float value)
     {
@@ -84,5 +136,10 @@ public class SceneLightUIController : MonoBehaviour
         Vector3 euler = targetLight.transform.rotation.eulerAngles;
         euler.x = value;
         targetLight.transform.rotation = Quaternion.Euler(euler);
+
+        if (xRotValueText != null)
+            xRotValueText.text = value.ToString("0");
     }
+    
+
 }
