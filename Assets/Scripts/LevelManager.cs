@@ -48,7 +48,8 @@ public class LevelManager : MonoBehaviour
                 Cursor.visible = true;
                 
                 mainMenuButtonsUI.SetActive(false);
-                EnableAudioIcons(true);
+                ShowAudioIcons(true);
+                SetRandomAudioActive(false);
 
                 break;
 
@@ -65,7 +66,9 @@ public class LevelManager : MonoBehaviour
                 editorUI.SetActive(false);
                 speech.SetActive(true);
                 mainMenuButtonsUI.SetActive(false);
-                EnableAudioIcons(false);
+
+                ShowAudioIcons(false);
+                SetRandomAudioActive(true);
 
 
 
@@ -82,7 +85,9 @@ public class LevelManager : MonoBehaviour
                     speechManager.StopSpeech();
                 speech.SetActive(false);
                 mainMenuButtonsUI.SetActive(true);
-                EnableAudioIcons(false);
+
+                ShowAudioIcons(false);
+                SetRandomAudioActive(false);
 
                 break;
         }
@@ -119,20 +124,37 @@ public class LevelManager : MonoBehaviour
         audioInSceneList.Remove(soundObject);
     }
 
-    public void EnableAudioIcons(bool enable)
+    public void ShowAudioIcons(bool show)
     {
-        if(audioInSceneList.Count==0) return;
-
         foreach (GameObject soundObject in audioInSceneList)
         {
-            RandomizeAudio randomizeAudio = soundObject.GetComponent<RandomizeAudio>();
-            if(randomizeAudio != null)
+            RandomizeAudio randomize = soundObject.GetComponent<RandomizeAudio>();
+            if (randomize != null)
+                randomize.EnableMeshAndCollider(show);
+        }
+    }
+
+    public void SetRandomAudioActive(bool active)
+    {
+        foreach (GameObject soundObject in audioInSceneList)
+        {
+            RandomizeAudio randomize = soundObject.GetComponent<RandomizeAudio>();
+            if (randomize != null)
             {
-                randomizeAudio.enabled = !enable;
-                randomizeAudio.EnableMeshAndCollider(enable);
+                if (active)
+                {
+                    randomize.StartSoundRandomly();
+                }
+                else
+                {
+                    randomize.StopRandomSound();
+                }
             }
         }
     }
+
+
+
     public GameObject GetFreeCam()
     {
         return freeCamObject;

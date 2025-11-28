@@ -201,6 +201,6 @@ public class InteractionController : MonoBehaviour
         if (selectedObject == null) return;
         AudioSource audioSource = selectedObject.GetComponent<AudioSource>();
         if (audioSource == null) return;
-        audioSource.Play();
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }

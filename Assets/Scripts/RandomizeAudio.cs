@@ -7,43 +7,69 @@ public class RandomizeAudio : MonoBehaviour
     [SerializeField] private float minDelay = 15f;
     [SerializeField] private float maxDelay = 30f;
     [SerializeField] private AudioSource source;
-    private MeshRenderer meshRenderer;
-    private Collider collider;
+    private MeshRenderer objectMeshRenderer;
+    private Collider objectCollider;
+    private Coroutine soundRoutine;
 
 
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
-        if(source != null )
-            StartCoroutine(StartSoundRandomly(source));
 
-        if (meshRenderer == null)
-            meshRenderer = GetComponent<MeshRenderer>();
+        if (objectMeshRenderer == null)
+            objectMeshRenderer = GetComponent<MeshRenderer>();
 
-        if (collider == null)
-            collider = GetComponent<Collider>();
+        if (objectCollider == null)
+            objectCollider = GetComponent<Collider>();
 
     }
 
     public void EnableMeshAndCollider(bool isEnabled)
     {
-        if(meshRenderer)
-            meshRenderer.enabled = isEnabled;
-        if(collider)
-            collider.enabled = isEnabled;
+        if (objectMeshRenderer)
+        {
+            objectMeshRenderer.enabled = isEnabled;
+        }
+        else
+        {
+            objectCollider = GetComponent<Collider>();
+            objectMeshRenderer.enabled = isEnabled;
+        }
+
+        if (objectCollider)
+            objectCollider.enabled = isEnabled;
+        else
+        {
+            objectMeshRenderer = GetComponent<MeshRenderer>();
+            objectCollider.enabled = isEnabled;
+        }
+    }
+    public void StartSoundRandomly()
+    {
+        if (source != null && soundRoutine == null)
+            soundRoutine = StartCoroutine(StartSoundRandomlyCoroutine());
     }
 
-
-    public IEnumerator StartSoundRandomly(AudioSource audio)
+    public IEnumerator StartSoundRandomlyCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minDelay,maxDelay));
-            audio.volume = Random.Range(0.1f,1.0f);
-            audio.Play();
+            source.volume = Random.Range(0.1f,1.0f);
+            source.Play();
         }
     }
+
+    public void StopRandomSound()
+    {
+        if (soundRoutine != null)
+        {
+            StopCoroutine(soundRoutine);
+            soundRoutine = null;
+        }
+    }
+
 
 
 }

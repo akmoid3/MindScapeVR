@@ -38,14 +38,21 @@ public class SceneLightUIController : MonoBehaviour
     {
         if (targetLight == null) return;
 
-        if (StateManager.Instance.CurrentState != State.Editing) return;
+        if (StateManager.Instance.CurrentState != State.Editing)
+        {
+            if (lr.enabled) lr.enabled = false;
+            return;
+        }
+
+        if (!lr.enabled) lr.enabled = true;
+
         Vector3 start = targetLight.transform.position;
         Vector3 end = start + targetLight.transform.forward * length;
 
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
     }
-    
+
     private void Start()
     {
         if (targetLight == null)

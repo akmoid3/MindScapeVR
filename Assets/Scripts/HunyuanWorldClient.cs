@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Newtonsoft.Json;
 using TMPro;
 using GLTFast;
+using UnityEditor.Experimental.GraphView;
 
 public class HunyuanWorldClient : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class HunyuanWorldClient : MonoBehaviour
 
     private bool isGenerating = false;
     private Material originalSkybox;
+
+    [SerializeField] private GameObject sceneObj;
+    [SerializeField] private GameObject planeObj;
+    [SerializeField] private GameObject deleteSceneButton;
 
     [Serializable]
     private class GenerateRequest
@@ -66,6 +71,23 @@ public class HunyuanWorldClient : MonoBehaviour
         }
 
         SetButtonState(false);
+    }
+
+    private void Update()
+    {
+        if (deleteSceneButton != null)
+        {
+            if (sceneObj != null && !deleteSceneButton.activeSelf)
+            {
+                deleteSceneButton.SetActive(true);
+                planeObj.SetActive(false);
+            }
+            else if (sceneObj == null && deleteSceneButton.activeSelf)
+            {
+                deleteSceneButton.SetActive(false);
+                planeObj.SetActive(true);
+            }
+        }
     }
 
     public void GenerateScene()
@@ -196,7 +218,6 @@ public class HunyuanWorldClient : MonoBehaviour
 
             GameObject container = new GameObject($"Scene_{jobId}");
 
-
             container.transform.position = Vector3.zero;
             container.transform.rotation = Quaternion.Euler(270f, 0f, 270f);
             container.transform.localScale = new Vector3(15f, 15f, 15f);
@@ -214,6 +235,8 @@ public class HunyuanWorldClient : MonoBehaviour
                 {
                     ApplyMaterialToScene(container);
                 }
+
+                sceneObj = container;
             }
             else
             {
@@ -247,6 +270,16 @@ public class HunyuanWorldClient : MonoBehaviour
             RenderSettings.skybox = originalSkybox;
             DynamicGI.UpdateEnvironment();
             Debug.Log("Original skybox restored");
+        }
+    }
+
+
+    public void DestroyScene()
+    {
+        if (sceneObj != null)
+        {
+            DestroyImmediate(sceneObj);
+            sceneObj = null;
         }
     }
 
