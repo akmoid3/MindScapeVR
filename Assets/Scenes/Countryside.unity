@@ -1213,6 +1213,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8819951308246491768}
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 871334036}
+    - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: generateButton
       value: 
       objectReference: {fileID: 8819951308246491767}

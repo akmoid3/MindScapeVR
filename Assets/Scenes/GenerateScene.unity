@@ -3829,6 +3829,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5063278954882918928}
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1941017687}
+    - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: generateButton
       value: 
       objectReference: {fileID: 5063278954882918927}
