@@ -94,7 +94,7 @@ public class Hunyuan3DClient : MonoBehaviour
             www.uploadHandler = new UploadHandlerRaw(body);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
-            www.timeout = 300;
+            www.timeout = 600;
 
             yield return www.SendWebRequest();
 

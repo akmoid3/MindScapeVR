@@ -1271,7 +1271,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2749897417255005923, guid: 48bfeac825c8e6d41ac07013a33aa569, type: 3}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749897417255005923, guid: 48bfeac825c8e6d41ac07013a33aa569, type: 3}
       propertyPath: m_BackGroundColor.a
@@ -1613,6 +1613,10 @@ PrefabInstance:
       propertyPath: planeObj
       value: 
       objectReference: {fileID: 1249617917}
+    - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
+      propertyPath: serverUrl
+      value: http://141.193.30.39:45218
+      objectReference: {fileID: 0}
     - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
       propertyPath: inputField
       value: 
@@ -2824,10 +2828,6 @@ PrefabInstance:
     - target: {fileID: 4324565651829357773, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
-      propertyPath: buttonText
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: inputField
