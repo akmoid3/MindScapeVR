@@ -218,7 +218,7 @@ public class HunyuanWorldClient : MonoBehaviour
             GameObject container = new GameObject($"Scene_{jobId}");
 
             container.transform.position = Vector3.zero;
-            container.transform.rotation = Quaternion.Euler(270f, 0f, 270f);
+            container.transform.rotation = Quaternion.Euler(270f, 0f, 0f);
             container.transform.localScale = new Vector3(15f, 15f, 15f);
 
             GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
