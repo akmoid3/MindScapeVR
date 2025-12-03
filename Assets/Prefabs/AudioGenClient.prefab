@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioGenClient
   levelManager: {fileID: 0}
-  serverUrl: http://localhost:8081
+  serverUrl: http://127.0.0.1:9393
   saveToFile: 1
   inputField: {fileID: 0}
   generateButton: {fileID: 0}

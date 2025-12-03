@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782adc074d87f3146b7833aece3c5210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hunyuan3DClient
-  serverUrl: http://141.193.30.39:45220
+  serverUrl: http://127.0.0.1:9292
   modelParent: {fileID: 0}
   modelScale: 0.5
   inputField: {fileID: 0}

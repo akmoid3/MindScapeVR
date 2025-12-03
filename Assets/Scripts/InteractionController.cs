@@ -45,10 +45,6 @@ public class InteractionController : MonoBehaviour
 
         controls.Builder.Select.started += _ => OnSelect();
 
-        controls.Builder.Drag.started += _ =>
-        {
-            Debug.Log("Drag STARTED");
-        };
         controls.Builder.Drag.performed += _ =>
         {
             dragging = true;
@@ -56,7 +52,6 @@ public class InteractionController : MonoBehaviour
         };
         controls.Builder.Drag.canceled += _ =>
         {
-            Debug.Log("Drag CANCELED");
             dragging = false;
         };
 
@@ -96,7 +91,6 @@ public class InteractionController : MonoBehaviour
         // Non conta i click su UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Click sulla UI, ignoro la selezione 3D");
             return;
         }
 
@@ -106,7 +100,6 @@ public class InteractionController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, selectableLayer))
         {
             selectedObject = hit.collider.gameObject;
-            Debug.Log("Selezionato: " + selectedObject.name);
 
             float dist = Vector3.Distance(mainCamera.transform.position, hit.point);
             dragDistance = dist;
@@ -127,7 +120,6 @@ public class InteractionController : MonoBehaviour
             audioUI.SetActive(false);
             deleteUI.SetActive(false);
 
-            Debug.Log("Click ma nessun oggetto selezionabile");
         }
     }
 

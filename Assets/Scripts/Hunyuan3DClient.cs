@@ -160,6 +160,20 @@ public class Hunyuan3DClient : MonoBehaviour
                 var gltf = container.AddComponent<GLTFast.GltfAsset>();
                 gltf.Url = "file://" + filePath;
                 
+                while (!gltf.IsDone)
+                    yield return null;
+
+                yield return null;
+
+                foreach (Renderer renderer in container.GetComponentsInChildren<Renderer>(true))
+                {
+                    foreach (Material mat in renderer.materials)
+                    {
+                        mat.SetFloat("_WorkflowMode", 0f); 
+                    }
+                }
+
+                
                 Debug.Log($"Model loaded from: {filePath}");
             }
         }

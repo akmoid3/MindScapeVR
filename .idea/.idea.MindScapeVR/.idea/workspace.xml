@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HunyuanWorldClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HunyuanWorldClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AudioGenClient.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioGenClient.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ModelGenClient.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ModelGenClient.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SceneGenClient.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SceneGenClient.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +66,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../MindScapeVRBuild1.0\MindScapeVR.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../MindScapeVRBuild2.0\MindScapeVR.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\akmoi\Desktop\PROVABUILD" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -142,6 +149,8 @@
       <workItem from="1764351601963" duration="6975000" />
       <workItem from="1764519556758" duration="1832000" />
       <workItem from="1764614837125" duration="646000" />
+      <workItem from="1764629128300" duration="605000" />
+      <workItem from="1764789557809" duration="4208000" />
     </task>
     <servers />
   </component>

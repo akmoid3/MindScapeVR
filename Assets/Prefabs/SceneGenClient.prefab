@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fb279a2b541e846a575316fe7736d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HunyuanWorldClient
-  serverUrl: http://localhost:5000
+  serverUrl: http://127.0.0.1:9191
   inputField: {fileID: 0}
   generateButton: {fileID: 0}
   buttonText: {fileID: 0}
@@ -53,3 +53,6 @@ MonoBehaviour:
   negativePrompt: 
   sceneClass: outdoor
   seed: 42
+  sceneObj: {fileID: 0}
+  planeObj: {fileID: 0}
+  deleteSceneButton: {fileID: 0}
