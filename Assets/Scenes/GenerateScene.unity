@@ -2910,6 +2910,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 521216713496876568, guid: 94048a4375c8071449b565cce14926f8, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1941017688}
+    - target: {fileID: 521216713496876568, guid: 94048a4375c8071449b565cce14926f8, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetAudioLoop
+      objectReference: {fileID: 0}
     - target: {fileID: 532372471326583369, guid: 94048a4375c8071449b565cce14926f8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

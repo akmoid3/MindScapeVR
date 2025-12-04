@@ -195,4 +195,13 @@ public class InteractionController : MonoBehaviour
         if (audioSource == null) return;
         audioSource.PlayOneShot(audioSource.clip);
     }
+    
+    public void SetAudioLoop(bool enableLoop)
+    {
+        if (selectedObject == null) return;
+        AudioSource audioSource = selectedObject.GetComponent<AudioSource>();
+        if (audioSource == null) return;
+        audioSource.loop = enableLoop;
+        Debug.Log(enableLoop);
+    }
 }

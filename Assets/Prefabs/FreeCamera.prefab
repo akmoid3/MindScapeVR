@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FreeSceneCamera
   moveSpeed: 5
   boostMultiplier: 4
-  acceleration: 12
+  acceleration: 20
   damping: 10
   lookSensitivity: 0.15
   minPitch: -89
