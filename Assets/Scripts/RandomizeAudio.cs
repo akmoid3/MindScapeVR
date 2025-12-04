@@ -47,8 +47,12 @@ public class RandomizeAudio : MonoBehaviour
     }
     public void StartSoundRandomly()
     {
-        if (source != null && soundRoutine == null)
+        if (source != null && !source.loop && soundRoutine == null)
             soundRoutine = StartCoroutine(StartSoundRandomlyCoroutine());
+        else if (source != null && source.loop)
+        {
+            source.Play();
+        }
     }
 
     public IEnumerator StartSoundRandomlyCoroutine()
@@ -68,6 +72,9 @@ public class RandomizeAudio : MonoBehaviour
             StopCoroutine(soundRoutine);
             soundRoutine = null;
         }
+        
+        if(source != null)
+            source.Stop();
     }
 
 
