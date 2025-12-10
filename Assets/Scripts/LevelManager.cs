@@ -1,6 +1,8 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Management; 
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,11 +19,11 @@ public class LevelManager : MonoBehaviour
         
     private void Start()
     {
-        
         speechManager = speech.GetComponent<MindfulnessAudioManager>();
         
-        StateManager.Instance.OnStateChanged += HandleStateChange;
+        StartCoroutine(SwitchToDesktopMode());
 
+        StateManager.Instance.OnStateChanged += HandleStateChange;
         HandleStateChange(StateManager.Instance.CurrentState);
     }
 
@@ -33,65 +35,103 @@ public class LevelManager : MonoBehaviour
 
     private void HandleStateChange(State state)
     {
+        StopAllCoroutines();
+
         switch (state)
         {
             case State.Editing:
-                freeCamObject.SetActive(true);
-                playerObject.SetActive(false);
-                rotatingCamera.SetActive(false);
+                StartCoroutine(SwitchToDesktopMode());
+
                 editorUI.SetActive(true);
                 speech.SetActive(false);
-                if(speechManager != null)
-                    speechManager.StopSpeech();
+                if(speechManager != null) speechManager.StopSpeech();
                 exitPlayModeButton.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                
                 mainMenuButtonsUI.SetActive(false);
+                
                 ShowAudioIcons(true);
                 SetRandomAudioActive(false);
-
                 break;
 
             case State.Playing:
-                freeCamObject.SetActive(false);
-                playerObject.SetActive(true);
-                rotatingCamera.SetActive(false);
+                StartCoroutine(SwitchToVRMode());
+
                 speech.SetActive(true);
                 exitPlayModeButton.SetActive(true);
-                
-                if(speechManager != null)
-                    speechManager.StartSpeech();
+                if(speechManager != null) speechManager.StartSpeech();
                 
                 editorUI.SetActive(false);
-                speech.SetActive(true);
                 mainMenuButtonsUI.SetActive(false);
 
                 ShowAudioIcons(false);
                 SetRandomAudioActive(true);
-
-
-
                 break;
             
             case State.MainMenu:
+                StartCoroutine(SwitchToDesktopMode());
+
                 rotatingCamera.SetActive(true);
-                freeCamObject.SetActive(false);
-                playerObject.SetActive(false);
+                
                 editorUI.SetActive(false);
                 exitPlayModeButton.SetActive(false);
-                
-                if(speechManager != null)
-                    speechManager.StopSpeech();
+                if(speechManager != null) speechManager.StopSpeech();
                 speech.SetActive(false);
                 mainMenuButtonsUI.SetActive(true);
 
                 ShowAudioIcons(false);
                 SetRandomAudioActive(false);
-
                 break;
         }
     }
+
+
+    private IEnumerator SwitchToVRMode()
+    {
+        freeCamObject.SetActive(false);
+        rotatingCamera.SetActive(false);
+
+        if (XRGeneralSettings.Instance.Manager.activeLoader == null)
+        {
+            Debug.Log("Inizializzazione VR...");
+            yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
+        }
+
+        if (XRGeneralSettings.Instance.Manager.activeLoader != null)
+        {
+            XRGeneralSettings.Instance.Manager.StartSubsystems();
+            
+            playerObject.SetActive(true);
+            Debug.Log("Modalità VR Attiva");
+        }
+        else
+        {
+            Debug.LogError("Errore: Visore non rilevato o inizializzazione fallita.");
+            freeCamObject.SetActive(true);
+        }
+    }
+
+    private IEnumerator SwitchToDesktopMode()
+    {
+        playerObject.SetActive(false);
+
+        if (XRGeneralSettings.Instance.Manager.isInitializationComplete)
+        {
+            Debug.Log("Spegnimento VR...");
+            XRGeneralSettings.Instance.Manager.StopSubsystems();
+            XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+        }
+
+        if (StateManager.Instance.CurrentState == State.Editing)
+        {
+            freeCamObject.SetActive(true);
+        }
+
+        yield return null; 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        Debug.Log("Modalità Desktop Attiva (Mouse Sbloccato)");
+    }
+
 
     public void OnPlayButtonPressed()
     {
@@ -112,7 +152,6 @@ public class LevelManager : MonoBehaviour
     {
         if(soundObject == null) return;
         if (audioInSceneList == null) return;
-
         audioInSceneList.Add(soundObject);
     }
 
@@ -120,7 +159,6 @@ public class LevelManager : MonoBehaviour
     {
         if (soundObject == null) return;
         if (audioInSceneList == null) return;
-
         audioInSceneList.Remove(soundObject);
     }
 
@@ -141,19 +179,11 @@ public class LevelManager : MonoBehaviour
             RandomizeAudio randomize = soundObject.GetComponent<RandomizeAudio>();
             if (randomize != null)
             {
-                if (active)
-                {
-                    randomize.StartSoundRandomly();
-                }
-                else
-                {
-                    randomize.StopRandomSound();
-                }
+                if (active) randomize.StartSoundRandomly();
+                else randomize.StopRandomSound();
             }
         }
     }
-
-
 
     public GameObject GetFreeCam()
     {

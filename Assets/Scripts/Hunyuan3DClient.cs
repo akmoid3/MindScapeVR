@@ -17,6 +17,7 @@ public class Hunyuan3DClient : MonoBehaviour
     [SerializeField] private TMP_Text buttonText;
 
     private bool isGenerating = false;
+    private string currentButtonState = "Generate";
 
     [Serializable]
     private class GenerateRequest
@@ -78,12 +79,25 @@ public class Hunyuan3DClient : MonoBehaviour
             generateButton.interactable = !generating;
 
         if (buttonText != null)
-            buttonText.text = generating ? "Generating..." : "Generate";
+            buttonText.text = generating ?  "Generating..." : "Generate";
+    }
+
+    private void SetButtonState(string state)
+    {
+        currentButtonState = state;
+
+        if (buttonText != null)
+            buttonText.text = state;
+
+        if (generateButton != null)
+            generateButton.interactable = (state == "Generate");
+
+        isGenerating = (state != "Generate");
     }
 
     private IEnumerator GenerateCoroutine()
     {
-        SetButtonState(true);
+        SetButtonState("Generating Model...");
 
         GenerateRequest request = new GenerateRequest { prompt = inputField.text, steps = 30, generate_texture = true };
         string json = JsonConvert.SerializeObject(request);
@@ -124,10 +138,16 @@ public class Hunyuan3DClient : MonoBehaviour
                 yield break;
             }
 
-            string downloadUrl = serverUrl + meshFile.download_url;
+            string downloadUrl = serverUrl + meshFile. download_url;
             using (UnityWebRequest downloadWww = UnityWebRequest.Get(downloadUrl))
             {
-                yield return downloadWww.SendWebRequest();
+                var operation = downloadWww.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    Debug.Log($"Download progress: {downloadWww.downloadProgress * 100:F1}%");
+                    SetButtonState($"Loading Model:  {downloadWww.downloadProgress * 100:F1}%");
+                    yield return new WaitForSeconds(0.5f);
+                }
 
                 if (downloadWww.result != UnityWebRequest.Result.Success)
                 {
@@ -136,10 +156,11 @@ public class Hunyuan3DClient : MonoBehaviour
                     yield break;
                 }
 
-                string folderPath = Path.Combine(Application.persistentDataPath, "Models");
+
+                string folderPath = Path. Combine(Application.persistentDataPath, "Models");
                 Directory.CreateDirectory(folderPath);
-                string filePath = Path.Combine(folderPath, meshFile.filename);
-                File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
+                string filePath = Path. Combine(folderPath, meshFile.filename);
+                File. WriteAllBytes(filePath, downloadWww.downloadHandler.data);
 
                 GameObject container = new GameObject($"Model_{meshFile.filename}");
                 container.AddComponent<BoxCollider>();
@@ -160,18 +181,23 @@ public class Hunyuan3DClient : MonoBehaviour
                 var gltf = container.AddComponent<GLTFast.GltfAsset>();
                 gltf.Url = "file://" + filePath;
                 
-                while (!gltf.IsDone)
+                while (!gltf. IsDone)
                     yield return null;
 
                 yield return null;
-
-                foreach (Renderer renderer in container.GetComponentsInChildren<Renderer>(true))
+              
+                
+                /*foreach (Renderer renderer in container.GetComponentsInChildren<Renderer>(true))
                 {
                     foreach (Material mat in renderer.materials)
                     {
                         mat.SetFloat("_WorkflowMode", 0f); 
                     }
-                }
+                }*/
+
+                //gltf.GetMaterial().SetFloat("_WorkflowMode", 0f);
+                
+                //buttonText.text = gltf.GetMaterial().shader.name;
 
                 
                 Debug.Log($"Model loaded from: {filePath}");
