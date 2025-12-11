@@ -13,7 +13,6 @@ Shader "Skybox/Horizontal Skybox"
     }
 
     CGINCLUDE
-
     #include "UnityCG.cginc"
 
     struct appdata
@@ -38,35 +37,40 @@ Shader "Skybox/Horizontal Skybox"
     half _Exponent2;
     half4 _MainTex_ST;
 
-    v2f vert (appdata v)
+    v2f vert(appdata v)
     {
         v2f o;
         UNITY_SETUP_INSTANCE_ID(v);
         UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-        o.position = UnityObjectToClipPos (v.position);
+        o.position = UnityObjectToClipPos(v.position);
         o.texcoord = v.texcoord;
         return o;
     }
 
-    half4 frag (v2f i) : COLOR
+    half4 frag(v2f i) : COLOR
     {
-        float p = normalize (i.texcoord).y;
-        float p1 = 1.0f - pow (min (1.0f, 1.0f - p), _Exponent1);
-        float p3 = 1.0f - pow (min (1.0f, 1.0f + p), _Exponent2);
+        float p = normalize(i.texcoord).y;
+        float p1 = 1.0f - pow(min(1.0f, 1.0f - p), _Exponent1);
+        float p3 = 1.0f - pow(min(1.0f, 1.0f + p), _Exponent2);
         float p2 = 1.0f - p1 - p3;
         return (_Color1 * p1 + _Color2 * p2 + _Color3 * p3) * _Intensity;
     }
-
     ENDCG
 
     SubShader
     {
-        Tags { "RenderType"="Background" "Queue"="Background" }
+        Tags
+        {
+            "RenderType"="Background" "Queue"="Background"
+        }
         Pass
         {
             ZWrite Off
             Cull Off
-            Fog { Mode Off }
+            Fog
+            {
+                Mode Off
+            }
             CGPROGRAM
             #pragma fragmentoption ARB_precision_hint_fastest
             #pragma vertex vert

@@ -11,7 +11,10 @@ Shader "Unlit/Grid"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+        Tags
+        {
+            "RenderType"="Transparent" "Queue"="Transparent"
+        }
         LOD 100
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
@@ -21,11 +24,13 @@ Shader "Unlit/Grid"
             #pragma vertex vert
             #pragma fragment frag
             #include "UnityCG.cginc"
+
             struct appdata
             {
                 float4 vertex : POSITION;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
+
             struct v2f
             {
                 float4 vertex : SV_POSITION;
@@ -41,7 +46,7 @@ Shader "Unlit/Grid"
             float _ODistance;
             float _TDistance;
 
-            v2f vert (appdata_full v)
+            v2f vert(appdata_full v)
             {
                 v2f o;
                 UNITY_SETUP_INSTANCE_ID(v);
@@ -52,20 +57,20 @@ Shader "Unlit/Grid"
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
                 float2 wrapped = frac(i.uv) - 0.5f;
                 float2 range = abs(wrapped);
                 float2 speeds;
                 speeds = fwidth(i.uv);
-                float2 pixelRange = range/speeds;
+                float2 pixelRange = range / speeds;
                 float lineWeight = saturate(min(pixelRange.x, pixelRange.y) - _LineThickness);
                 half4 param = lerp(_GridColour, _BaseColour, lineWeight);
 
                 //distance falloff
                 half3 viewDirW = _WorldSpaceCameraPos - i.worldPos;
                 half viewDist = length(viewDirW);
-                half falloff = saturate((viewDist - _ODistance) / (_TDistance - _ODistance) );
+                half falloff = saturate((viewDist - _ODistance) / (_TDistance - _ODistance));
                 param.a *= (1.0f - falloff);
                 return param;
             }

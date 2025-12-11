@@ -7,7 +7,7 @@ public class MindfulnessAudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private float timeBetweenClips = 10.0f;
-    
+
     private AudioSource audioSource;
     private Coroutine speechCoroutine;
 
@@ -32,7 +32,7 @@ public class MindfulnessAudioManager : MonoBehaviour
     public void StartSpeech()
     {
         StopSpeech();
-        
+
         speechCoroutine = StartCoroutine(StartSpeechCoroutine());
     }
 
@@ -63,7 +63,7 @@ public class MindfulnessAudioManager : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenClips);
         }
-        
+
         speechCoroutine = null;
     }
 }

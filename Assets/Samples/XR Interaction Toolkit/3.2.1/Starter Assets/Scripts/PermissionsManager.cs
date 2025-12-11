@@ -19,7 +19,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     {
         const string k_DefaultPermissionId = "com.oculus.permission.USE_SCENE";
 
-        [SerializeField, Tooltip("Enables or disables the processing of permissions on Awake. If disabled, permissions will not be processed until the ProcessPermissions method is called.")]
+        [SerializeField,
+         Tooltip(
+             "Enables or disables the processing of permissions on Awake. If disabled, permissions will not be processed until the ProcessPermissions method is called.")]
         bool m_ProcessPermissionsOnAwake = true;
 
         [SerializeField, Tooltip("The system permissions to request when this component starts.")]
@@ -38,6 +40,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         {
             [Tooltip("The platform type for which these permissions is intended for.")]
             public XRPlatformType platformType;
+
             public List<PermissionRequest> permissions;
         }
 
@@ -53,14 +56,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             [Tooltip("Whether to request permission from the operating system.")]
             public bool enabled = true;
 
-            [HideInInspector]
-            public bool requested = false;
+            [HideInInspector] public bool requested = false;
 
-            [HideInInspector]
-            public bool responseReceived = false;
+            [HideInInspector] public bool responseReceived = false;
 
-            [HideInInspector]
-            public bool granted = false;
+            [HideInInspector] public bool granted = false;
 
             public UnityEvent<string> onPermissionGranted;
 
@@ -129,7 +129,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             var permission = m_CurrentPlatformPermissionGroup.permissions.Find(p => p.permissionId == permissionStr);
             if (permission == null)
             {
-                Debug.LogWarning($"Permission granted callback received for an unexpected permission request, permission ID {permissionStr}", this);
+                Debug.LogWarning(
+                    $"Permission granted callback received for an unexpected permission request, permission ID {permissionStr}",
+                    this);
                 return;
             }
 
@@ -147,7 +149,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             var permission = m_CurrentPlatformPermissionGroup.permissions.Find(p => p.permissionId == permissionStr);
             if (permission == null)
             {
-                Debug.LogWarning($"Permission denied callback received for an unexpected permission request, permission ID {permissionStr}", this);
+                Debug.LogWarning(
+                    $"Permission denied callback received for an unexpected permission request, permission ID {permissionStr}",
+                    this);
                 return;
             }
 

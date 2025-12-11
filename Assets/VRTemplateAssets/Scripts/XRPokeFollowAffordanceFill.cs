@@ -19,16 +19,13 @@ namespace Unity.VRTemplate
                  "\nNote: Should be a direct child GameObject.")]
         Transform m_PokeFollowTransform;
 
-        [SerializeField]
-        [Tooltip("Transform that will scale the mask when this interactable is poked.")]
+        [SerializeField] [Tooltip("Transform that will scale the mask when this interactable is poked.")]
         RectTransform m_PokeFill;
 
-        [SerializeField]
-        [Tooltip("The max width size for the poke fill image when pressed")]
+        [SerializeField] [Tooltip("The max width size for the poke fill image when pressed")]
         float m_PokeFillMaxSizeX;
 
-        [SerializeField]
-        [Tooltip("The max height size for the poke fill image when pressed")]
+        [SerializeField] [Tooltip("The max height size for the poke fill image when pressed")]
         float m_PokeFillMaxSizeY;
 
         /// <summary>
@@ -43,7 +40,8 @@ namespace Unity.VRTemplate
 
         [SerializeField]
         [Range(0f, 20f)]
-        [Tooltip("Multiplies transform position interpolation as a factor of Time.deltaTime. If 0, no smoothing will be applied.")]
+        [Tooltip(
+            "Multiplies transform position interpolation as a factor of Time.deltaTime. If 0, no smoothing will be applied.")]
         float m_SmoothingSpeed = 8f;
 
         /// <summary>
@@ -56,7 +54,8 @@ namespace Unity.VRTemplate
         }
 
         [SerializeField]
-        [Tooltip("When this component is no longer the target of the poke, the Poke Follow Transform returns to the original position.")]
+        [Tooltip(
+            "When this component is no longer the target of the poke, the Poke Follow Transform returns to the original position.")]
         bool m_ReturnToInitialPosition = true;
 
         /// <summary>
@@ -97,8 +96,7 @@ namespace Unity.VRTemplate
             set => m_ClampToMinDistance = value;
         }
 
-        [SerializeField]
-        [Tooltip("The minimum distance from this transform that the Poke Follow Transform can move.")]
+        [SerializeField] [Tooltip("The minimum distance from this transform that the Poke Follow Transform can move.")]
         float m_MinDistance;
 
         /// <summary>
@@ -110,6 +108,7 @@ namespace Unity.VRTemplate
             get => m_MinDistance;
             set => m_MinDistance = value;
         }
+
         [Space]
         [SerializeField]
         [Tooltip("Whether to keep the Poke Follow Transform from moving past a maximum distance from the poke target.")]
@@ -125,7 +124,8 @@ namespace Unity.VRTemplate
         }
 
         [SerializeField]
-        [Tooltip("The maximum distance from this transform that the Poke Follow Transform can move. Will shrink to the distance of initial position if that is smaller, or if this is 0.")]
+        [Tooltip(
+            "The maximum distance from this transform that the Poke Follow Transform can move. Will shrink to the distance of initial position if that is smaller, or if this is 0.")]
         float m_MaxDistance;
 
         /// <summary>
@@ -164,7 +164,9 @@ namespace Unity.VRTemplate
             if (m_PokeFollowTransform != null)
             {
                 m_InitialPosition = m_PokeFollowTransform.localPosition;
-                m_MaxDistance = m_MaxDistance > 0f ? Mathf.Min(m_InitialPosition.magnitude, m_MaxDistance) : m_InitialPosition.magnitude;
+                m_MaxDistance = m_MaxDistance > 0f
+                    ? Mathf.Min(m_InitialPosition.magnitude, m_MaxDistance)
+                    : m_InitialPosition.magnitude;
                 m_BindingsGroup.AddBinding(m_TransformTweenableVariable.Subscribe(OnTransformTweenableVariableUpdated));
                 m_BindingsGroup.AddBinding(m_PokeStrengthTweenableVariable.Subscribe(OnPokeStrengthChanged));
                 m_BindingsGroup.AddBinding(m_PokeDataProvider.pokeStateData.SubscribeAndUpdate(OnPokeStateDataUpdated));

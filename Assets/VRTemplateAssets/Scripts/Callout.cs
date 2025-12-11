@@ -8,24 +8,20 @@ namespace Unity.VRTemplate
     /// </summary>
     public class Callout : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The tooltip Transform associated with this Callout.")]
+        [SerializeField] [Tooltip("The tooltip Transform associated with this Callout.")]
         Transform m_LazyTooltip;
 
-        [SerializeField]
-        [Tooltip("The line curve GameObject associated with this Callout.")]
+        [SerializeField] [Tooltip("The line curve GameObject associated with this Callout.")]
         GameObject m_Curve;
 
         [SerializeField]
         [Tooltip("The required time to dwell on this callout before the tooltip and curve are enabled.")]
         float m_DwellTime = 1f;
 
-        [SerializeField]
-        [Tooltip("Whether the associated tooltip will be unparented on Start.")]
+        [SerializeField] [Tooltip("Whether the associated tooltip will be unparented on Start.")]
         bool m_Unparent = true;
 
-        [SerializeField]
-        [Tooltip("Whether the associated tooltip and curve will be disabled on Start.")]
+        [SerializeField] [Tooltip("Whether the associated tooltip and curve will be disabled on Start.")]
         bool m_TurnOffAtStart = true;
 
         bool m_Gazing = false;

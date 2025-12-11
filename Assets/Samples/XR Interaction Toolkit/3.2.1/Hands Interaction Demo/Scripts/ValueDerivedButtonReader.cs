@@ -9,8 +9,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     [DefaultExecutionOrder(XRInteractionUpdateOrder.k_XRInputDeviceButtonReader)]
     public class ValueDerivedButtonReader : MonoBehaviour, IXRInputButtonReader
     {
-        [SerializeField]
-        [Tooltip("The input reader used to reference the float value to convert to a bool.")]
+        [SerializeField] [Tooltip("The input reader used to reference the float value to convert to a bool.")]
         XRInputValueReader<float> m_ValueInput = new XRInputValueReader<float>("Value");
 
         /// <summary>
@@ -23,7 +22,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
         [SerializeField]
-        [Tooltip("The threshold value to use to determine when the button is pressed. Considered pressed equal to or greater than this value.")]
+        [Tooltip(
+            "The threshold value to use to determine when the button is pressed. Considered pressed equal to or greater than this value.")]
         [Range(0f, 1f)]
         float m_PressThreshold = 0.8f;
 
@@ -37,7 +37,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
         [SerializeField]
-        [Tooltip("The threshold value to use to determine when the button is released when it was previously pressed. Keeps being pressed until falls back to a value of or below this value.")]
+        [Tooltip(
+            "The threshold value to use to determine when the button is released when it was previously pressed. Keeps being pressed until falls back to a value of or below this value.")]
         [Range(0f, 1f)]
         float m_ReleaseThreshold = 0.25f;
 

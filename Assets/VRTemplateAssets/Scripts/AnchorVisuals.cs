@@ -72,7 +72,8 @@ namespace Unity.VRTemplate
                 StopCoroutine(m_ArrowCoroutine);
 
             var arrowPosition = m_Arrow.localPosition;
-            m_ArrowCoroutine = StartCoroutine(m_ArrowHeight.PlaySequence(arrowPosition, new float3(arrowPosition.x, m_TargetArrowHeight, arrowPosition.z), m_ArrowAnimationDuration));
+            m_ArrowCoroutine = StartCoroutine(m_ArrowHeight.PlaySequence(arrowPosition,
+                new float3(arrowPosition.x, m_TargetArrowHeight, arrowPosition.z), m_ArrowAnimationDuration));
         }
 
         /// <summary>
@@ -94,7 +95,8 @@ namespace Unity.VRTemplate
                 StopCoroutine(m_ArrowCoroutine);
 
             var arrowPosition = m_Arrow.localPosition;
-            m_ArrowCoroutine = StartCoroutine(m_ArrowHeight.PlaySequence(arrowPosition, new float3(arrowPosition.x, 0, arrowPosition.z), m_ArrowAnimationDuration));
+            m_ArrowCoroutine = StartCoroutine(m_ArrowHeight.PlaySequence(arrowPosition,
+                new float3(arrowPosition.x, 0, arrowPosition.z), m_ArrowAnimationDuration));
         }
 
         /// <summary>

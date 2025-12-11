@@ -28,8 +28,8 @@ public class MainMenu : MonoBehaviour
     {
         LoadScene("MainMenu");
     }
-    
-    
+
+
     public void Quit()
     {
         Application.Quit();
@@ -38,5 +38,4 @@ public class MainMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
-
 }

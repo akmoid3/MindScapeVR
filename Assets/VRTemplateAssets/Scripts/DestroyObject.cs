@@ -7,8 +7,7 @@ namespace Unity.VRTemplate
     /// </summary>
     public class DestroyObject : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Time before destroying in seconds.")]
+        [SerializeField] [Tooltip("Time before destroying in seconds.")]
         float m_Lifetime = 5f;
 
         void Start()

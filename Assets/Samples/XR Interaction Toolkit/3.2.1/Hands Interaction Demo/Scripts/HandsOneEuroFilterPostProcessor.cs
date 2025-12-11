@@ -15,14 +15,12 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     public class HandsOneEuroFilterPostProcessor : MonoBehaviour
 #endif
     {
-        [SerializeField]
-        [Tooltip("Smoothing amount at low speeds.")]
+        [SerializeField] [Tooltip("Smoothing amount at low speeds.")]
 #pragma warning disable CS0414 // Field assigned but its value is never used -- Keep to retain serialized value when XR Hands is not installed
         float m_FilterMinCutoff = 0.1f;
 #pragma warning restore CS0414
 
-        [SerializeField]
-        [Tooltip("Filter's responsiveness to speed changes.")]
+        [SerializeField] [Tooltip("Filter's responsiveness to speed changes.")]
 #pragma warning disable CS0414 // Field assigned but its value is never used -- Keep to retain serialized value when XR Hands is not installed
         float m_FilterBeta = 0.2f;
 #pragma warning restore CS0414
@@ -85,7 +83,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
         /// <inheritdoc />
-        public void ProcessJoints(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateType updateType)
+        public void ProcessJoints(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags successFlags,
+            XRHandSubsystem.UpdateType updateType)
         {
             var leftHand = subsystem.leftHand;
             if (leftHand.isTracked)
@@ -97,7 +96,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
                 }
                 else
                 {
-                    var newLeftPosition = m_LeftHandFilter.Filter(leftHandPose.position, Time.deltaTime, m_FilterMinCutoff, m_FilterBeta);
+                    var newLeftPosition = m_LeftHandFilter.Filter(leftHandPose.position, Time.deltaTime,
+                        m_FilterMinCutoff, m_FilterBeta);
                     var newLeftPose = new Pose(newLeftPosition, leftHandPose.rotation);
 
                     leftHand.SetRootPose(newLeftPose);
@@ -117,7 +117,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
                 }
                 else
                 {
-                    var newRightPosition = m_RightHandFilter.Filter(rightHandPose.position, Time.deltaTime, m_FilterMinCutoff, m_FilterBeta);
+                    var newRightPosition = m_RightHandFilter.Filter(rightHandPose.position, Time.deltaTime,
+                        m_FilterMinCutoff, m_FilterBeta);
                     var newRightPose = new Pose(newRightPosition, rightHandPose.rotation);
 
                     rightHand.SetRootPose(newRightPose);

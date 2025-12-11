@@ -37,8 +37,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             Started,
         }
 
-        [SerializeField]
-        InputActionProperty m_AimFlagsAction = new InputActionProperty(new InputAction(expectedControlType: "Integer"));
+        [SerializeField] InputActionProperty m_AimFlagsAction =
+            new InputActionProperty(new InputAction(expectedControlType: "Integer"));
 
         /// <summary>
         /// The Input System action to read the Aim Flags.
@@ -69,8 +69,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             }
         }
 
-        [SerializeField]
-        UnityEvent m_SystemGestureStarted;
+        [SerializeField] UnityEvent m_SystemGestureStarted;
 
         /// <summary>
         /// Calls the methods in its invocation list when the system gesture starts, which typically occurs when
@@ -84,8 +83,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             set => m_SystemGestureStarted = value;
         }
 
-        [SerializeField]
-        UnityEvent m_SystemGestureEnded;
+        [SerializeField] UnityEvent m_SystemGestureEnded;
 
         /// <summary>
         /// Calls the methods in its invocation list when the system gesture ends.
@@ -103,8 +101,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             set => m_SystemGestureEnded = value;
         }
 
-        [SerializeField]
-        UnityEvent m_MenuPressed;
+        [SerializeField] UnityEvent m_MenuPressed;
 
         /// <summary>
         /// Calls the methods in its invocation list when the menu button is triggered by a palm pinch gesture.
@@ -128,7 +125,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         /// <seealso cref="systemGestureEnded"/>
         public IReadOnlyBindableVariable<SystemGestureState> systemGestureState => m_SystemGestureState;
 
-        readonly BindableEnum<SystemGestureState> m_SystemGestureState = new BindableEnum<SystemGestureState>(checkEquality: false);
+        readonly BindableEnum<SystemGestureState> m_SystemGestureState =
+            new BindableEnum<SystemGestureState>(checkEquality: false);
 
 #if XR_HANDS_1_1_OR_NEWER && (ENABLE_VR || UNITY_GAMECORE)
         [NonSerialized] // NonSerialized is required to avoid an "Unsupported enum base type" error about the Flags enum being ulong

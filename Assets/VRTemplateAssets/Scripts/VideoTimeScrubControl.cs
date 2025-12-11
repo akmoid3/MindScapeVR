@@ -13,28 +13,22 @@ namespace Unity.VRTemplate
     [RequireComponent(typeof(VideoPlayer))]
     public class VideoTimeScrubControl : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Video play/pause button GameObject")]
+        [SerializeField] [Tooltip("Video play/pause button GameObject")]
         GameObject m_ButtonPlayOrPause;
 
-        [SerializeField]
-        [Tooltip("Slider that controls the video")]
+        [SerializeField] [Tooltip("Slider that controls the video")]
         Slider m_Slider;
 
-        [SerializeField]
-        [Tooltip("Play icon sprite")]
+        [SerializeField] [Tooltip("Play icon sprite")]
         Sprite m_IconPlay;
 
-        [SerializeField]
-        [Tooltip("Pause icon sprite")]
+        [SerializeField] [Tooltip("Pause icon sprite")]
         Sprite m_IconPause;
 
-        [SerializeField]
-        [Tooltip("Play or pause button image.")]
+        [SerializeField] [Tooltip("Play or pause button image.")]
         Image m_ButtonPlayOrPauseIcon;
 
-        [SerializeField]
-        [Tooltip("Text that displays the current time of the video.")]
+        [SerializeField] [Tooltip("Text that displays the current time of the video.")]
         TextMeshProUGUI m_VideoTimeText;
 
         [SerializeField]

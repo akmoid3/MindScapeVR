@@ -26,8 +26,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_CameraToFace = value;
         }
 
-        [SerializeField]
-        [Tooltip("The list of prefabs available to spawn.")]
+        [SerializeField] [Tooltip("The list of prefabs available to spawn.")]
         List<GameObject> m_ObjectPrefabs = new List<GameObject>();
 
         /// <summary>
@@ -40,7 +39,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         [SerializeField]
-        [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
+        [Tooltip(
+            "Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
             "sure the visualization only lives temporarily.")]
         GameObject m_SpawnVisualizationPrefab;
 
@@ -56,7 +56,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         [SerializeField]
         [Tooltip("The index of the prefab to spawn. If outside the range of the list, this behavior will select " +
-            "a random object each time it spawns.")]
+                 "a random object each time it spawns.")]
         int m_SpawnOptionIndex = -1;
 
         /// <summary>
@@ -77,8 +77,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <seealso cref="RandomizeSpawnOption"/>
         public bool isSpawnOptionRandomized => m_SpawnOptionIndex < 0 || m_SpawnOptionIndex >= m_ObjectPrefabs.Count;
 
-        [SerializeField]
-        [Tooltip("Whether to only spawn an object if the spawn point is within view of the camera.")]
+        [SerializeField] [Tooltip("Whether to only spawn an object if the spawn point is within view of the camera.")]
         bool m_OnlySpawnInView = true;
 
         /// <summary>
@@ -91,7 +90,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         [SerializeField]
-        [Tooltip("The size, in viewport units, of the periphery inside the viewport that will not be considered in view.")]
+        [Tooltip(
+            "The size, in viewport units, of the periphery inside the viewport that will not be considered in view.")]
         float m_ViewportPeriphery = 0.15f;
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         [SerializeField]
         [Tooltip("When enabled, the object will be rotated about the y-axis when spawned by Spawn Angle Range, " +
-            "in relation to the direction of the spawn point to the camera.")]
+                 "in relation to the direction of the spawn point to the camera.")]
         bool m_ApplyRandomAngleAtSpawn = true;
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         [SerializeField]
         [Tooltip("The range in degrees that the object will randomly be rotated about the y axis when spawned, " +
-            "in relation to the direction of the spawn point to the camera.")]
+                 "in relation to the direction of the spawn point to the camera.")]
         float m_SpawnAngleRange = 45f;
 
         /// <summary>
@@ -133,8 +133,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_SpawnAngleRange = value;
         }
 
-        [SerializeField]
-        [Tooltip("Whether to spawn each object as a child of this object.")]
+        [SerializeField] [Tooltip("Whether to spawn each object as a child of this object.")]
         bool m_SpawnAsChildren;
 
         /// <summary>
@@ -197,7 +196,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 var inViewMin = m_ViewportPeriphery;
                 var inViewMax = 1f - m_ViewportPeriphery;
                 var pointInViewportSpace = cameraToFace.WorldToViewportPoint(spawnPoint);
-                if (pointInViewportSpace.z < 0f || pointInViewportSpace.x > inViewMax || pointInViewportSpace.x < inViewMin ||
+                if (pointInViewportSpace.z < 0f || pointInViewportSpace.x > inViewMax ||
+                    pointInViewportSpace.x < inViewMin ||
                     pointInViewportSpace.y > inViewMax || pointInViewportSpace.y < inViewMin)
                 {
                     return false;

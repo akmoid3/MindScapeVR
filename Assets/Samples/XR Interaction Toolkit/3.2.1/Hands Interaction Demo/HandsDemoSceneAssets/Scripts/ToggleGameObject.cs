@@ -5,8 +5,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// </summary>
     public class ToggleGameObject : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The GameObject to toggle the active state for.")]
+        [SerializeField] [Tooltip("The GameObject to toggle the active state for.")]
         GameObject m_ActivationGameObject;
 
         /// <summary>
@@ -18,8 +17,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             set => m_ActivationGameObject = value;
         }
 
-        [SerializeField]
-        [Tooltip("Whether the GameObject is currently active.")]
+        [SerializeField] [Tooltip("Whether the GameObject is currently active.")]
         bool m_CurrentlyActive;
 
         /// <summary>

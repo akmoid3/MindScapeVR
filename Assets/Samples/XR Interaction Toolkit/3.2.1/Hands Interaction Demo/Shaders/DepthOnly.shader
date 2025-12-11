@@ -1,11 +1,12 @@
 Shader "Unlit/DepthOnly"
 {
-    Properties
-    {
-    }
+    Properties {}
     SubShader
     {
-        Tags { "Queue"="Transparent" }
+        Tags
+        {
+            "Queue"="Transparent"
+        }
 
 
         Pass

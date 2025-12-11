@@ -58,12 +58,12 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
     [CreateAssetMenu(fileName = "MaterialPipelineHandler", menuName = "XR/MaterialPipelineHandler", order = 0)]
     public class MaterialPipelineHandler : ScriptableObject
     {
-        [SerializeField]
-        [Tooltip("List of materials and their associated shaders.")]
+        [SerializeField] [Tooltip("List of materials and their associated shaders.")]
         List<ShaderContainer> m_ShaderContainers;
 
         [SerializeField]
-        [Tooltip("If true, the shaders will be refreshed automatically when the editor opens and when this scriptable object instance is enabled.")]
+        [Tooltip(
+            "If true, the shaders will be refreshed automatically when the editor opens and when this scriptable object instance is enabled.")]
         bool m_AutoRefreshShaders = true;
 
 #if UNITY_EDITOR
@@ -97,8 +97,12 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
                     continue;
 
                 // Find the appropriate shaders based on the toggle
-                Shader birpShader = info.useBuiltinShaderName ? Shader.Find(info.builtInPipelineShaderName) : info.builtInPipelineShader;
-                Shader srpShader = info.useSRPShaderName ? Shader.Find(info.scriptableRenderPipelineShaderName) : info.scriptableRenderPipelineShader;
+                Shader birpShader = info.useBuiltinShaderName
+                    ? Shader.Find(info.builtInPipelineShaderName)
+                    : info.builtInPipelineShader;
+                Shader srpShader = info.useSRPShaderName
+                    ? Shader.Find(info.scriptableRenderPipelineShaderName)
+                    : info.scriptableRenderPipelineShader;
 
                 // Determine current shader for comparison
                 Shader currentShader = info.material.shader;
@@ -141,7 +145,8 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
 
             SerializedProperty materialProp = property.FindPropertyRelative("material");
             SerializedProperty useSRPShaderNameProp = property.FindPropertyRelative("useSRPShaderName");
-            SerializedProperty scriptableShaderNameProp = property.FindPropertyRelative("scriptableRenderPipelineShaderName");
+            SerializedProperty scriptableShaderNameProp =
+                property.FindPropertyRelative("scriptableRenderPipelineShaderName");
             SerializedProperty scriptableShaderProp = property.FindPropertyRelative("scriptableRenderPipelineShader");
             SerializedProperty useShaderNameProp = property.FindPropertyRelative("useBuiltinShaderName");
             SerializedProperty builtInNameProp = property.FindPropertyRelative("builtInPipelineShaderName");
@@ -207,7 +212,8 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
             float headerHeight = EditorGUIUtility.singleLineHeight; // No longer need extra height for headers.
 
             // Calculate height for fields and headers
-            float fieldsHeight = baseFieldCount * singleLineHeight + (baseFieldCount - 1 + extraLineCount) * verticalSpacing;
+            float fieldsHeight = baseFieldCount * singleLineHeight +
+                                 (baseFieldCount - 1 + extraLineCount) * verticalSpacing;
 
             // Allow space for header, separator line, and a bit of padding before the line.
             float headersHeight = 2 * (headerHeight + verticalSpacing);

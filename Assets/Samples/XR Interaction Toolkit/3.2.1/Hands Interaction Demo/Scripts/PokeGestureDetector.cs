@@ -12,20 +12,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// </summary>
     public class PokeGestureDetector : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Which hand to check for the poke gesture.")]
+        [SerializeField] [Tooltip("Which hand to check for the poke gesture.")]
 #if XR_HANDS_1_1_OR_NEWER
         Handedness m_Handedness;
 #else
         int m_Handedness;
 #endif
 
-        [SerializeField]
-        [Tooltip("Called when the hand has started a poke gesture.")]
+        [SerializeField] [Tooltip("Called when the hand has started a poke gesture.")]
         UnityEvent m_PokeGestureStarted;
 
-        [SerializeField]
-        [Tooltip("Called when the hand has ended a poke gesture.")]
+        [SerializeField] [Tooltip("Called when the hand has ended a poke gesture.")]
         UnityEvent m_PokeGestureEnded;
 
 #if XR_HANDS_1_1_OR_NEWER
@@ -67,7 +64,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
 #if XR_HANDS_1_1_OR_NEWER
-        void OnUpdatedHands(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags updateSuccessFlags, XRHandSubsystem.UpdateType updateType)
+        void OnUpdatedHands(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags updateSuccessFlags,
+            XRHandSubsystem.UpdateType updateType)
         {
             var wasPoking = m_IsPoking;
             switch (m_Handedness)
@@ -78,15 +76,16 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
 
                     var leftHand = subsystem.leftHand;
                     m_IsPoking = IsIndexExtended(leftHand) && IsMiddleGrabbing(leftHand) && IsRingGrabbing(leftHand) &&
-                        IsLittleGrabbing(leftHand);
+                                 IsLittleGrabbing(leftHand);
                     break;
                 case Handedness.Right:
                     if (!HasUpdateSuccessFlag(updateSuccessFlags, XRHandSubsystem.UpdateSuccessFlags.RightHandJoints))
                         return;
 
                     var rightHand = subsystem.rightHand;
-                    m_IsPoking = IsIndexExtended(rightHand) && IsMiddleGrabbing(rightHand) && IsRingGrabbing(rightHand) &&
-                        IsLittleGrabbing(rightHand);
+                    m_IsPoking = IsIndexExtended(rightHand) && IsMiddleGrabbing(rightHand) &&
+                                 IsRingGrabbing(rightHand) &&
+                                 IsLittleGrabbing(rightHand);
                     break;
             }
 
@@ -103,7 +102,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         /// <param name="successFlags">The flags enum instance.</param>
         /// <param name="successFlag">The flag to check if set.</param>
         /// <returns>Returns <see langword="true"/> if the bit field or bit fields are set, otherwise returns <see langword="false"/>.</returns>
-        static bool HasUpdateSuccessFlag(XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateSuccessFlags successFlag)
+        static bool HasUpdateSuccessFlag(XRHandSubsystem.UpdateSuccessFlags successFlags,
+            XRHandSubsystem.UpdateSuccessFlags successFlag)
         {
             return (successFlags & successFlag) == successFlag;
         }

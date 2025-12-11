@@ -10,20 +10,23 @@ using GLTFast;
 
 public class HunyuanWorldClient : MonoBehaviour
 {
-    [Header("Server Settings")]
-    [SerializeField] private string serverUrl = "http://localhost:5000";
+    [Header("Server Settings")] [SerializeField]
+    private string serverUrl = "http://localhost:5000";
 
-    [Header("UI References")]
-    [SerializeField] private TMP_InputField inputField;
+    [Header("UI References")] [SerializeField]
+    private TMP_InputField inputField;
+
     [SerializeField] private Button generateButton;
     [SerializeField] private TMP_Text buttonText;
 
-    [Header("Scene Settings")]
-    [SerializeField] private Material skyboxMaterial;
+    [Header("Scene Settings")] [SerializeField]
+    private Material skyboxMaterial;
+
     [SerializeField] private Material sceneMaterial;
 
-    [Header("Generation Parameters")]
-    [SerializeField] private string negativePrompt = "";
+    [Header("Generation Parameters")] [SerializeField]
+    private string negativePrompt = "";
+
     [SerializeField] private string sceneClass = "outdoor";
     [SerializeField] private int seed = 42;
 
@@ -77,10 +80,10 @@ public class HunyuanWorldClient : MonoBehaviour
     {
         if (deleteSceneButton != null)
         {
-            if (sceneObj != null && ! deleteSceneButton.activeSelf)
+            if (sceneObj != null && !deleteSceneButton.activeSelf)
             {
                 deleteSceneButton.SetActive(true);
-                planeObj. SetActive(false);
+                planeObj.SetActive(false);
             }
             else if (sceneObj == null && deleteSceneButton.activeSelf)
             {
@@ -95,7 +98,7 @@ public class HunyuanWorldClient : MonoBehaviour
         if (isGenerating)
             return;
 
-        if (! string.IsNullOrEmpty(inputField.text))
+        if (!string.IsNullOrEmpty(inputField.text))
         {
             StartCoroutine(GenerateSceneCoroutine());
         }
@@ -110,7 +113,7 @@ public class HunyuanWorldClient : MonoBehaviour
         isGenerating = generating;
 
         if (generateButton != null)
-            generateButton.interactable = ! generating;
+            generateButton.interactable = !generating;
 
         if (buttonText != null)
             buttonText.text = generating ? "Generating..." : "Generate";
@@ -142,7 +145,7 @@ public class HunyuanWorldClient : MonoBehaviour
         };
 
         string json = JsonConvert.SerializeObject(request);
-        byte[] body = System.Text.Encoding. UTF8.GetBytes(json);
+        byte[] body = System.Text.Encoding.UTF8.GetBytes(json);
 
         using (UnityWebRequest www = new UnityWebRequest(serverUrl + "/generate_scene", "POST"))
         {
@@ -155,12 +158,12 @@ public class HunyuanWorldClient : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug. LogError($"Generation failed: {www.error}");
+                Debug.LogError($"Generation failed: {www.error}");
                 SetButtonState(false);
                 yield break;
             }
 
-            GenerateResponse response = JsonConvert. DeserializeObject<GenerateResponse>(www.downloadHandler.text);
+            GenerateResponse response = JsonConvert.DeserializeObject<GenerateResponse>(www.downloadHandler.text);
             string jobId = response.job_id;
 
             Debug.Log($"Scene generation started. Job ID: {jobId}");
@@ -187,7 +190,7 @@ public class HunyuanWorldClient : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug. LogError($"Skybox download failed: {www.error}");
+                Debug.LogError($"Skybox download failed: {www.error}");
                 yield break;
             }
 
@@ -205,7 +208,6 @@ public class HunyuanWorldClient : MonoBehaviour
 
     private IEnumerator DownloadAndLoadModel(string jobId)
     {
-        
         string modelUrl = $"{serverUrl}/api/file/{jobId}/mesh_layer0.glb";
         Debug.Log($"Downloading model...");
 
@@ -229,15 +231,15 @@ public class HunyuanWorldClient : MonoBehaviour
             }
 
             string folderPath = Path.Combine(Application.persistentDataPath, "Scenes");
-            Directory. CreateDirectory(folderPath);
-            string filePath = Path. Combine(folderPath, $"{jobId}_mesh.glb");
+            Directory.CreateDirectory(folderPath);
+            string filePath = Path.Combine(folderPath, $"{jobId}_mesh.glb");
             File.WriteAllBytes(filePath, www.downloadHandler.data);
 
             GameObject container = new GameObject($"Scene_{jobId}");
 
             container.transform.position = Vector3.zero;
             container.transform.rotation = Quaternion.Euler(270f, 0f, 0f);
-            container.transform. localScale = new Vector3(15f, 15f, 15f);
+            container.transform.localScale = new Vector3(15f, 15f, 15f);
 
             GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
 
@@ -274,6 +276,7 @@ public class HunyuanWorldClient : MonoBehaviour
             {
                 materials[i] = sceneMaterial;
             }
+
             renderer.sharedMaterials = materials;
         }
 

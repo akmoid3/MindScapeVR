@@ -13,18 +13,14 @@ namespace Unity.VRTemplate
         [Serializable]
         class Step
         {
-            [SerializeField]
-            public GameObject stepObject;
+            [SerializeField] public GameObject stepObject;
 
-            [SerializeField]
-            public string buttonText;
+            [SerializeField] public string buttonText;
         }
 
-        [SerializeField]
-        public TextMeshProUGUI m_StepButtonTextField;
+        [SerializeField] public TextMeshProUGUI m_StepButtonTextField;
 
-        [SerializeField]
-        List<Step> m_StepList = new List<Step>();
+        [SerializeField] List<Step> m_StepList = new List<Step>();
 
         int m_CurrentStepIndex = 0;
 

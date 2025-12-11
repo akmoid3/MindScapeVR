@@ -8,12 +8,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// </summary>
     public class HideObjectWhenInteractorBlocked : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The interactor that this component monitors for blockages.")]
+        [SerializeField] [Tooltip("The interactor that this component monitors for blockages.")]
         XRBaseInteractor m_Interactor;
 
-        [SerializeField]
-        [Tooltip("The GameObject to hide when the interactor is blocked.")]
+        [SerializeField] [Tooltip("The GameObject to hide when the interactor is blocked.")]
         GameObject m_ObjectToHide;
 
         ICurveInteractionDataProvider m_CurveInteractionDataProvider;
@@ -43,7 +41,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
             if (m_HasCurveDataProvider)
                 m_ObjectToHide.SetActive(m_CurveInteractionDataProvider.isActive);
             else
-                m_ObjectToHide.SetActive(m_Interactor.isActiveAndEnabled && !m_Interactor.IsBlockedByInteractionWithinGroup());
+                m_ObjectToHide.SetActive(m_Interactor.isActiveAndEnabled &&
+                                         !m_Interactor.IsBlockedByInteractionWithinGroup());
         }
     }
 }

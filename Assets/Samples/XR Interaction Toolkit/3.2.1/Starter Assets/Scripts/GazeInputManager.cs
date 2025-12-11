@@ -11,8 +11,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         // This is the name of the layout that is registered by EyeGazeInteraction in the OpenXR Plugin package
         const string k_EyeGazeLayoutName = "EyeGaze";
 
-        [SerializeField]
-        [Tooltip("Enable fallback to head tracking if eye tracking is unavailable.")]
+        [SerializeField] [Tooltip("Enable fallback to head tracking if eye tracking is unavailable.")]
         bool m_FallbackIfEyeTrackingUnavailable = true;
 
         /// <summary>
@@ -52,7 +51,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 }
             }
 
-            Debug.LogWarning($"Could not find a device that supports eye tracking on Awake. {this} has subscribed to device connected events and will activate the GameObject when an eye tracking device is connected.", this);
+            Debug.LogWarning(
+                $"Could not find a device that supports eye tracking on Awake. {this} has subscribed to device connected events and will activate the GameObject when an eye tracking device is connected.",
+                this);
 
             InputDevices.deviceConnected += OnDeviceConnected;
             InputSystem.InputSystem.onDeviceChange += OnDeviceChange;
@@ -71,7 +72,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         void OnDeviceConnected(InputDevice inputDevice)
         {
-            if (m_EyeTrackingDeviceFound || !inputDevice.characteristics.HasFlag(InputDeviceCharacteristics.EyeTracking))
+            if (m_EyeTrackingDeviceFound ||
+                !inputDevice.characteristics.HasFlag(InputDeviceCharacteristics.EyeTracking))
                 return;
 
             Debug.Log("Eye tracking device found!", this);

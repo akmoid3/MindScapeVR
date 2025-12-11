@@ -14,20 +14,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <summary>
         /// Meta Quest devices supported through OpenXR.
         /// </summary>
-        [InspectorName("OpenXR: Meta")]
-        OpenXRMeta,
+        [InspectorName("OpenXR: Meta")] OpenXRMeta,
 
         /// <summary>
         /// Android XR devices supported through OpenXR.
         /// </summary>
-        [InspectorName("OpenXR: Android XR")]
-        OpenXRAndroidXR,
+        [InspectorName("OpenXR: Android XR")] OpenXRAndroidXR,
 
         /// <summary>
         /// Other OpenXR devices.
         /// </summary>
-        [InspectorName("OpenXR: Other")]
-        OpenXROther,
+        [InspectorName("OpenXR: Other")] OpenXROther,
 
         /// <summary>
         /// Other device that does not support OpenXR or not running on an OpenXR runtime.
@@ -56,6 +53,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                     s_CurrentPlatform = GetCurrentXRPlatform();
                     s_Initialized = true;
                 }
+
                 return s_CurrentPlatform;
             }
         }

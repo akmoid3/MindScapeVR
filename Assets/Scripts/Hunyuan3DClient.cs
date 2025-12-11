@@ -15,6 +15,8 @@ public class Hunyuan3DClient : MonoBehaviour
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button generateButton;
     [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private int targetPolyCount = 10000;
+
 
     private bool isGenerating = false;
     private string currentButtonState = "Generate";
@@ -25,6 +27,7 @@ public class Hunyuan3DClient : MonoBehaviour
         public string prompt;
         public int steps;
         public bool generate_texture;
+        public int target_faces;
     }
 
     [Serializable]
@@ -32,6 +35,7 @@ public class Hunyuan3DClient : MonoBehaviour
     {
         public bool success;
         public FileInfo[] files;
+        public string job_id;
     }
 
     [Serializable]
@@ -79,7 +83,7 @@ public class Hunyuan3DClient : MonoBehaviour
             generateButton.interactable = !generating;
 
         if (buttonText != null)
-            buttonText.text = generating ?  "Generating..." : "Generate";
+            buttonText.text = generating ? "Generating..." : "Generate";
     }
 
     private void SetButtonState(string state)
@@ -99,7 +103,15 @@ public class Hunyuan3DClient : MonoBehaviour
     {
         SetButtonState("Generating Model...");
 
-        GenerateRequest request = new GenerateRequest { prompt = inputField.text, steps = 30, generate_texture = true };
+        GenerateRequest request = new GenerateRequest
+        {
+            prompt = inputField.text,
+            steps = 30,
+            generate_texture = true,
+            target_faces = targetPolyCount
+        };
+
+
         string json = JsonConvert.SerializeObject(request);
         byte[] body = System.Text.Encoding.UTF8.GetBytes(json);
 
@@ -120,6 +132,7 @@ public class Hunyuan3DClient : MonoBehaviour
             }
 
             GenerateResponse response = JsonConvert.DeserializeObject<GenerateResponse>(www.downloadHandler.text);
+            string job_id = response.job_id;
 
             FileInfo meshFile = null;
             foreach (var file in response.files)
@@ -138,7 +151,7 @@ public class Hunyuan3DClient : MonoBehaviour
                 yield break;
             }
 
-            string downloadUrl = serverUrl + meshFile. download_url;
+            string downloadUrl = serverUrl + meshFile.download_url;
             using (UnityWebRequest downloadWww = UnityWebRequest.Get(downloadUrl))
             {
                 var operation = downloadWww.SendWebRequest();
@@ -157,14 +170,21 @@ public class Hunyuan3DClient : MonoBehaviour
                 }
 
 
-                string folderPath = Path. Combine(Application.persistentDataPath, "Models");
+                string folderPath = Path.Combine(Application.persistentDataPath, "Models");
                 Directory.CreateDirectory(folderPath);
-                string filePath = Path. Combine(folderPath, meshFile.filename);
-                File. WriteAllBytes(filePath, downloadWww.downloadHandler.data);
+                string filePath = Path.Combine(folderPath, job_id);
+                File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
 
-                GameObject container = new GameObject($"Model_{meshFile.filename}");
+                GameObject container = new GameObject($"Model_{job_id}");
+
+
+                GeneratedObjectInfo info = container.AddComponent<GeneratedObjectInfo>();
+                info.type = GenerationType.Model;
+                info.fileName = job_id;
+
+
                 container.AddComponent<BoxCollider>();
-                
+
                 int selectableLayer = LayerMask.NameToLayer("SelectableObjects");
                 if (selectableLayer == -1)
                 {
@@ -174,32 +194,30 @@ public class Hunyuan3DClient : MonoBehaviour
                 {
                     container.layer = selectableLayer;
                 }
+
                 if (modelParent != null)
                     container.transform.SetParent(modelParent);
                 container.transform.localScale = Vector3.one * modelScale;
 
                 var gltf = container.AddComponent<GLTFast.GltfAsset>();
                 gltf.Url = "file://" + filePath;
-                
-                while (!gltf. IsDone)
+
+                while (!gltf.IsDone)
                     yield return null;
 
                 yield return null;
-              
-                
-                /*foreach (Renderer renderer in container.GetComponentsInChildren<Renderer>(true))
-                {
-                    foreach (Material mat in renderer.materials)
-                    {
-                        mat.SetFloat("_WorkflowMode", 0f); 
-                    }
-                }*/
 
-                //gltf.GetMaterial().SetFloat("_WorkflowMode", 0f);
-                
-                //buttonText.text = gltf.GetMaterial().shader.name;
 
-                
+                // foreach (Renderer renderer in container.GetComponentsInChildren<Renderer>(true))
+                // {
+                //     foreach (Material mat in renderer.materials)
+                //     {
+                //         mat.SetFloat("_WorkflowMode", 0f);
+                //     }
+                // }
+
+                gltf.GetMaterial().SetFloat("_WorkflowMode", 0f);
+
                 Debug.Log($"Model loaded from: {filePath}");
             }
         }

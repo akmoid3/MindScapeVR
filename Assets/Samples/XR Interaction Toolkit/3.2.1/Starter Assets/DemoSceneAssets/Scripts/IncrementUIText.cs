@@ -8,8 +8,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     public class IncrementUIText : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The Text component this behavior uses to display the incremented value.")]
+        [SerializeField] [Tooltip("The Text component this behavior uses to display the incremented value.")]
         Text m_Text;
 
         /// <summary>
@@ -29,7 +28,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         protected void Awake()
         {
             if (m_Text == null)
-                Debug.LogWarning("Missing required Text component reference. Use the Inspector window to assign which Text component to increment.", this);
+                Debug.LogWarning(
+                    "Missing required Text component reference. Use the Inspector window to assign which Text component to increment.",
+                    this);
         }
 
         /// <summary>

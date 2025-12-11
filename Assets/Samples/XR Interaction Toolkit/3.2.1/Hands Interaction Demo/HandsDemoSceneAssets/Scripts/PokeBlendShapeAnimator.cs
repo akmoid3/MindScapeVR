@@ -11,24 +11,19 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// </summary>
     public class PokeBlendShapeAnimator : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The PokeFilter to use to determine the interaction strength.")]
+        [SerializeField] [Tooltip("The PokeFilter to use to determine the interaction strength.")]
         XRPokeFilter m_PokeFilter;
 
-        [SerializeField]
-        [Tooltip("The SkinnedMeshRenderer to animate.")]
+        [SerializeField] [Tooltip("The SkinnedMeshRenderer to animate.")]
         SkinnedMeshRenderer m_SkinnedMeshRenderer;
 
-        [SerializeField]
-        [Tooltip("The index of the blend shape to animate.")]
+        [SerializeField] [Tooltip("The index of the blend shape to animate.")]
         int m_BlendShapeIndex;
 
-        [SerializeField]
-        [Tooltip("The minimum blend shape value.")]
+        [SerializeField] [Tooltip("The minimum blend shape value.")]
         float m_BlendShapeMin;
 
-        [SerializeField]
-        [Tooltip("The maximum blend shape value.")]
+        [SerializeField] [Tooltip("The maximum blend shape value.")]
         float m_BlendShapeMax = 100f;
 
         readonly BindingsGroup m_BindingsGroup = new BindingsGroup();

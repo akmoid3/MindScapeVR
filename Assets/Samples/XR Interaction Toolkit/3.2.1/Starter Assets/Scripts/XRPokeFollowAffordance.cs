@@ -36,7 +36,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         [SerializeField]
         [Range(0f, 20f)]
-        [Tooltip("Multiplies transform position interpolation as a factor of Time.deltaTime. If 0, no smoothing will be applied.")]
+        [Tooltip(
+            "Multiplies transform position interpolation as a factor of Time.deltaTime. If 0, no smoothing will be applied.")]
         float m_SmoothingSpeed = 16f;
 
         /// <summary>
@@ -49,7 +50,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         [SerializeField]
-        [Tooltip("When this component is no longer the target of the poke, the Poke Follow Transform returns to the original position.")]
+        [Tooltip(
+            "When this component is no longer the target of the poke, the Poke Follow Transform returns to the original position.")]
         bool m_ReturnToInitialPosition = true;
 
         /// <summary>
@@ -89,8 +91,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_ClampToMaxDistance = value;
         }
 
-        [SerializeField]
-        [Tooltip("The maximum distance from this transform that the Poke Follow Transform can move.")]
+        [SerializeField] [Tooltip("The maximum distance from this transform that the Poke Follow Transform can move.")]
         float m_MaxDistance;
 
         /// <summary>
@@ -122,9 +123,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         Vector3 m_InitialPosition;
         bool m_IsFirstFrame;
 
-        [HideInInspector]
-        [SerializeField]
-        XRPokeFilter m_PokeFilter = null;
+        [HideInInspector] [SerializeField] XRPokeFilter m_PokeFilter = null;
 
         /// <summary>
         /// See <see cref="MonoBehaviour"/>.
@@ -147,9 +146,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 m_BindingsGroup.AddBinding(m_TransformTweenableVariable.Subscribe(OnTransformTweenableVariableUpdated));
 
                 if (m_MultiPokeStateDataProvider != null)
-                    m_BindingsGroup.AddBinding(m_MultiPokeStateDataProvider.GetPokeStateDataForTarget(transform).Subscribe(OnPokeStateDataUpdated));
+                    m_BindingsGroup.AddBinding(m_MultiPokeStateDataProvider.GetPokeStateDataForTarget(transform)
+                        .Subscribe(OnPokeStateDataUpdated));
                 else if (m_PokeDataProvider != null)
-                    m_BindingsGroup.AddBinding(m_PokeDataProvider.pokeStateData.SubscribeAndUpdate(OnPokeStateDataUpdated));
+                    m_BindingsGroup.AddBinding(
+                        m_PokeDataProvider.pokeStateData.SubscribeAndUpdate(OnPokeStateDataUpdated));
             }
             else
             {

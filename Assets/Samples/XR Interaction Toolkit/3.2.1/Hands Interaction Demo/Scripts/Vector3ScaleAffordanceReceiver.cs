@@ -8,11 +8,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// Affordance receiver applying a Vector3 (Float3) affordance theme to a Transform local scale.
     /// Broadcasts new affordance value with Unity Event.
     /// </summary>
-    [Obsolete("The Affordance System namespace and all associated classes have been deprecated. The existing affordance system will be moved, replaced and updated with a new interaction feedback system in a future version of XRI.")]
+    [Obsolete(
+        "The Affordance System namespace and all associated classes have been deprecated. The existing affordance system will be moved, replaced and updated with a new interaction feedback system in a future version of XRI.")]
     public class Vector3ScaleAffordanceReceiver : Vector3AffordanceReceiver
     {
-        [SerializeField]
-        [Tooltip("The transform to apply the scale value to.")]
+        [SerializeField] [Tooltip("The transform to apply the scale value to.")]
         Transform m_TargetTransform;
 
         /// <inheritdoc />

@@ -12,7 +12,8 @@ namespace Unity.VRTemplate
     /// </summary>
     public class XRKnob : XRBaseInteractable
     {
-        const float k_ModeSwitchDeadZone = 0.1f; // Prevents rapid switching between the different rotation tracking modes
+        const float
+            k_ModeSwitchDeadZone = 0.1f; // Prevents rapid switching between the different rotation tracking modes
 
         /// <summary>
         /// Helper class used to track rotations that can go beyond 180 degrees while minimizing accumulation error
@@ -87,43 +88,35 @@ namespace Unity.VRTemplate
 
         [Serializable]
         [Tooltip("Event called when the value of the knob is changed")]
-        public class ValueChangeEvent : UnityEvent<float> { }
+        public class ValueChangeEvent : UnityEvent<float>
+        {
+        }
 
-        [SerializeField]
-        [Tooltip("The object that is visually grabbed and manipulated")]
+        [SerializeField] [Tooltip("The object that is visually grabbed and manipulated")]
         Transform m_Handle = null;
 
-        [SerializeField]
-        [Tooltip("The value of the knob")]
-        [Range(0.0f, 1.0f)]
+        [SerializeField] [Tooltip("The value of the knob")] [Range(0.0f, 1.0f)]
         float m_Value = 0.5f;
 
-        [SerializeField]
-        [Tooltip("Whether this knob's rotation should be clamped by the angle limits")]
+        [SerializeField] [Tooltip("Whether this knob's rotation should be clamped by the angle limits")]
         bool m_ClampedMotion = true;
 
-        [SerializeField]
-        [Tooltip("Rotation of the knob at value '1'")]
+        [SerializeField] [Tooltip("Rotation of the knob at value '1'")]
         float m_MaxAngle = 90.0f;
 
-        [SerializeField]
-        [Tooltip("Rotation of the knob at value '0'")]
+        [SerializeField] [Tooltip("Rotation of the knob at value '0'")]
         float m_MinAngle = -90.0f;
 
-        [SerializeField]
-        [Tooltip("Angle increments to support, if greater than '0'")]
+        [SerializeField] [Tooltip("Angle increments to support, if greater than '0'")]
         float m_AngleIncrement = 0.0f;
 
-        [SerializeField]
-        [Tooltip("The position of the interactor controls rotation when outside this radius")]
+        [SerializeField] [Tooltip("The position of the interactor controls rotation when outside this radius")]
         float m_PositionTrackedRadius = 0.1f;
 
-        [SerializeField]
-        [Tooltip("How much controller rotation")]
+        [SerializeField] [Tooltip("How much controller rotation")]
         float m_TwistSensitivity = 1.5f;
 
-        [SerializeField]
-        [Tooltip("Events to trigger when the knob is rotated")]
+        [SerializeField] [Tooltip("Events to trigger when the knob is rotated")]
         ValueChangeEvent m_OnValueChange = new ValueChangeEvent();
 
         IXRSelectInteractor m_Interactor;
@@ -330,7 +323,9 @@ namespace Unity.VRTemplate
                 m_ForwardVectorAngles.SetTargetFromVector(localForward);
 
             // Apply offset to base knob rotation to get new knob rotation
-            var knobRotation = m_BaseKnobRotation - ((m_UpVectorAngles.totalOffset + m_ForwardVectorAngles.totalOffset) * m_TwistSensitivity) - m_PositionAngles.totalOffset;
+            var knobRotation = m_BaseKnobRotation -
+                               ((m_UpVectorAngles.totalOffset + m_ForwardVectorAngles.totalOffset) *
+                                m_TwistSensitivity) - m_PositionAngles.totalOffset;
 
             // Clamp to range
             if (m_ClampedMotion)
@@ -374,7 +369,9 @@ namespace Unity.VRTemplate
 
         float ValueToRotation()
         {
-            return m_ClampedMotion ? Mathf.Lerp(m_MinAngle, m_MaxAngle, m_Value) : Mathf.LerpUnclamped(m_MinAngle, m_MaxAngle, m_Value);
+            return m_ClampedMotion
+                ? Mathf.Lerp(m_MinAngle, m_MaxAngle, m_Value)
+                : Mathf.LerpUnclamped(m_MinAngle, m_MaxAngle, m_Value);
         }
 
         void UpdateBaseKnobRotation()
@@ -422,8 +419,11 @@ namespace Unity.VRTemplate
                 segmentCounter++;
                 var endAngle = segmentCounter * k_SegmentRatio * 2.0f * Mathf.PI;
 
-                Gizmos.DrawLine(circleCenter + (Mathf.Cos(startAngle) * circleX + Mathf.Sin(startAngle) * circleY) * m_PositionTrackedRadius,
-                    circleCenter + (Mathf.Cos(endAngle) * circleX + Mathf.Sin(endAngle) * circleY) * m_PositionTrackedRadius);
+                Gizmos.DrawLine(
+                    circleCenter + (Mathf.Cos(startAngle) * circleX + Mathf.Sin(startAngle) * circleY) *
+                    m_PositionTrackedRadius,
+                    circleCenter + (Mathf.Cos(endAngle) * circleX + Mathf.Sin(endAngle) * circleY) *
+                    m_PositionTrackedRadius);
             }
         }
 

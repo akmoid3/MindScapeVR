@@ -7,9 +7,12 @@ Shader "VR/TunnelingVignette"
         _VignetteColor("Vignette Color", Color) = (0, 0, 0, 1)
         _VignetteColorBlend("Vignette Color Blend", Color) = (0, 0, 0, 1)
     }
-        SubShader
+    SubShader
     {
-        Tags { "Queue" = "Transparent+5" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+        Tags
+        {
+            "Queue" = "Transparent+5" "IgnoreProjector" = "True" "RenderType" = "Transparent"
+        }
         LOD 100
 
         Pass
@@ -58,7 +61,7 @@ Shader "VR/TunnelingVignette"
                 return o;
             }
 
-            UNITY_DECLARE_SCREENSPACE_TEXTURE(_MainTex);
+            UNITY_DECLARE_SCREENSPACE_TEXTURE (_MainTex);
 
             fixed4 frag(v2f i) : SV_Target
             {

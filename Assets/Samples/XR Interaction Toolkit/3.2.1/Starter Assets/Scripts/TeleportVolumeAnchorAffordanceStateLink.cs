@@ -11,11 +11,13 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// of the state provider's originally bound interactable.
     /// </summary>
     [RequireComponent(typeof(XRInteractableAffordanceStateProvider))]
-    [Obsolete("The Affordance System namespace and all associated classes have been deprecated. The existing affordance system will be moved, replaced and updated with a new interaction feedback system in a future version of XRI.")]
+    [Obsolete(
+        "The Affordance System namespace and all associated classes have been deprecated. The existing affordance system will be moved, replaced and updated with a new interaction feedback system in a future version of XRI.")]
     public class TeleportVolumeAnchorAffordanceStateLink : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("The teleport volume that will drive affordance states when its destination anchor belongs to this interactable.")]
+        [Tooltip(
+            "The teleport volume that will drive affordance states when its destination anchor belongs to this interactable.")]
         TeleportationMultiAnchorVolume m_ContainingTeleportVolume;
 
         /// <summary>
@@ -46,15 +48,16 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             if (m_ContainingTeleportVolume == null)
             {
-                Debug.LogError($"Missing {nameof(TeleportationMultiAnchorVolume)} reference on {gameObject.name}.", this);
+                Debug.LogError($"Missing {nameof(TeleportationMultiAnchorVolume)} reference on {gameObject.name}.",
+                    this);
                 enabled = false;
                 return;
             }
 
             var interactableSource = m_AffordanceStateProvider.interactableSource;
             m_Interactable = interactableSource != null && interactableSource is IXRInteractable interactable
-                    ? interactable
-                    : m_AffordanceStateProvider.GetComponentInParent<IXRInteractable>();
+                ? interactable
+                : m_AffordanceStateProvider.GetComponentInParent<IXRInteractable>();
 
             if (m_Interactable == null)
             {

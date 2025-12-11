@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class FreeSceneCamera : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 10f;
+    [Header("Movement Settings")] public float moveSpeed = 10f;
     public float boostMultiplier = 4f;
     public float acceleration = 12f;
     public float damping = 10f;
 
-    [Header("Look Settings")]
-    public float lookSensitivity = 0.15f;
+    [Header("Look Settings")] public float lookSensitivity = 0.15f;
     public float minPitch = -89f;
     public float maxPitch = 89f;
-
 
 
     private CameraController controls;
@@ -45,8 +42,8 @@ public class FreeSceneCamera : MonoBehaviour
 
         controls.Player.MiddleClick.started += _ => middleClickHeld = true;
         controls.Player.MiddleClick.canceled += _ => middleClickHeld = false;
-        
-    
+
+
         controls.Player.Sprint.started += _ => boostHeld = true;
         controls.Player.Sprint.canceled += _ => boostHeld = false;
     }
@@ -67,44 +64,44 @@ public class FreeSceneCamera : MonoBehaviour
         HandleMovement();
     }
 
-   private void HandleLook()
-{
-    if (rightClickHeld)
+    private void HandleLook()
     {
-        yaw += lookInput.x * lookSensitivity;
-        pitch -= lookInput.y * lookSensitivity;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+        if (rightClickHeld)
+        {
+            yaw += lookInput.x * lookSensitivity;
+            pitch -= lookInput.y * lookSensitivity;
+            pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+            transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+        }
+        else if (middleClickHeld)
+        {
+            Vector3 right = transform.right * -lookInput.x * 0.02f;
+            Vector3 up = transform.up * -lookInput.y * 0.02f;
+            transform.position += right + up;
+        }
     }
-    else if (middleClickHeld)
+
+    private void HandleMovement()
     {
-        Vector3 right = transform.right * -lookInput.x * 0.02f;
-        Vector3 up = transform.up * -lookInput.y * 0.02f;
-        transform.position += right + up;
+        if (!rightClickHeld)
+            return;
+
+        Vector3 targetVelocity =
+            (transform.forward * moveInput.y +
+             transform.right * moveInput.x);
+
+        if (boostHeld)
+            targetVelocity *= boostMultiplier;
+
+        currentVelocity = Vector3.Lerp(
+            currentVelocity,
+            targetVelocity * moveSpeed,
+            Time.deltaTime * acceleration
+        );
+
+        transform.position += currentVelocity * Time.deltaTime;
+
+        currentVelocity = Vector3.Lerp(currentVelocity, Vector3.zero, Time.deltaTime * damping);
     }
-}
-
-private void HandleMovement()
-{
-    if (!rightClickHeld)
-        return;   
-
-    Vector3 targetVelocity =
-        (transform.forward * moveInput.y +
-         transform.right * moveInput.x);
-
-    if (boostHeld)
-        targetVelocity *= boostMultiplier;
-
-    currentVelocity = Vector3.Lerp(
-        currentVelocity,
-        targetVelocity * moveSpeed,
-        Time.deltaTime * acceleration
-    );
-
-    transform.position += currentVelocity * Time.deltaTime;
-
-    currentVelocity = Vector3.Lerp(currentVelocity, Vector3.zero, Time.deltaTime * damping);
-}
 }

@@ -8,8 +8,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     [RequireComponent(typeof(Toggle))]
     public class ToggleColorToggler : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Normal color for the toggle in the on state.")]
+        [SerializeField] [Tooltip("Normal color for the toggle in the on state.")]
         Color m_OnColor = new Color(32 / 255f, 150 / 255f, 243 / 255f);
 
         /// <summary>
@@ -21,8 +20,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_OnColor = value;
         }
 
-        [SerializeField]
-        [Tooltip("Normal color for the toggle in the off state.")]
+        [SerializeField] [Tooltip("Normal color for the toggle in the off state.")]
         Color m_OffColor = new Color(46 / 255f, 46 / 255f, 46 / 255f);
 
         /// <summary>

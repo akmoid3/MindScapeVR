@@ -12,7 +12,6 @@ public class RandomizeAudio : MonoBehaviour
     private Coroutine soundRoutine;
 
 
-
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -22,29 +21,14 @@ public class RandomizeAudio : MonoBehaviour
 
         if (objectCollider == null)
             objectCollider = GetComponent<Collider>();
-
     }
 
-    public void EnableMeshAndCollider(bool isEnabled)
+    public void EnableCollider(bool isEnabled)
     {
-        if (objectMeshRenderer)
-        {
-            objectMeshRenderer.enabled = isEnabled;
-        }
-        else
-        {
-            objectCollider = GetComponent<Collider>();
-            objectMeshRenderer.enabled = isEnabled;
-        }
-
-        if (objectCollider)
+        if(objectCollider)
             objectCollider.enabled = isEnabled;
-        else
-        {
-            objectMeshRenderer = GetComponent<MeshRenderer>();
-            objectCollider.enabled = isEnabled;
-        }
     }
+
     public void StartSoundRandomly()
     {
         if (source != null && !source.loop && soundRoutine == null)
@@ -59,8 +43,8 @@ public class RandomizeAudio : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(minDelay,maxDelay));
-            source.volume = Random.Range(0.1f,1.0f);
+            yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+            source.volume = Random.Range(0.1f, 1.0f);
             source.Play();
         }
     }
@@ -72,11 +56,8 @@ public class RandomizeAudio : MonoBehaviour
             StopCoroutine(soundRoutine);
             soundRoutine = null;
         }
-        
-        if(source != null)
+
+        if (source != null)
             source.Stop();
     }
-
-
-
 }

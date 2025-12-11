@@ -11,7 +11,10 @@ Shader "SpatialFramework/Textured Fresnel/Standard"
     {
         // First, we do a stencil like technique of writing depth of the model,
         // so we don't have any transparent overdraw in subsequent steps
-        Tags{ "RenderType" = "Transparent" "Queue" = "Transparent" }
+        Tags
+        {
+            "RenderType" = "Transparent" "Queue" = "Transparent"
+        }
         Pass
         {
             Tags
@@ -32,13 +35,11 @@ Shader "SpatialFramework/Textured Fresnel/Standard"
             ColorMask 0
 
             CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment fragEmpty
 
-                #pragma vertex vert
-                #pragma fragment fragEmpty
-
-                #include "UnityCG.cginc"
-                #include "TexturedStableFresnelCommon.cginc"
-
+            #include "UnityCG.cginc"
+            #include "TexturedStableFresnelCommon.cginc"
             ENDCG
         }
 
@@ -61,13 +62,11 @@ Shader "SpatialFramework/Textured Fresnel/Standard"
             ColorMask 0
 
             CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment fragEmpty
 
-                #pragma vertex vert
-                #pragma fragment fragEmpty
-
-                #include "UnityCG.cginc"
-                #include "TexturedStableFresnelCommon.cginc"
-
+            #include "UnityCG.cginc"
+            #include "TexturedStableFresnelCommon.cginc"
             ENDCG
         }
 
@@ -88,13 +87,11 @@ Shader "SpatialFramework/Textured Fresnel/Standard"
             Offset -1, 0
 
             CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment fragRimShader
 
-                #pragma vertex vert
-                #pragma fragment fragRimShader
-
-                #include "UnityCG.cginc"
-                #include "TexturedStableFresnelCommon.cginc"
-
+            #include "UnityCG.cginc"
+            #include "TexturedStableFresnelCommon.cginc"
             ENDCG
         }
     }

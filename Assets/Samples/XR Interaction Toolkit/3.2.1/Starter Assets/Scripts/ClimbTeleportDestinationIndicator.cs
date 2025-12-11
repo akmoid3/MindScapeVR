@@ -10,8 +10,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     public class ClimbTeleportDestinationIndicator : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The interactor that drives the display and placement of the pointer object.")]
+        [SerializeField] [Tooltip("The interactor that drives the display and placement of the pointer object.")]
         ClimbTeleportInteractor m_ClimbTeleportInteractor;
 
         /// <summary>
@@ -25,7 +24,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         [SerializeField]
         [Tooltip("The prefab to spawn when a teleport destination is chosen. The instance will spawn next to the " +
-            "destination and point its forward vector at the destination and its up vector at the camera.")]
+                 "destination and point its forward vector at the destination and its up vector at the camera.")]
         GameObject m_PointerPrefab;
 
         /// <summary>
@@ -38,8 +37,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_PointerPrefab = value;
         }
 
-        [SerializeField]
-        [Tooltip("The distance from the destination at which the pointer object spawns.")]
+        [SerializeField] [Tooltip("The distance from the destination at which the pointer object spawns.")]
         float m_PointerDistance = 0.3f;
 
         /// <summary>
@@ -95,7 +93,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         void OnInteractorHoverEntered(HoverEnterEventArgs args)
         {
-            if (m_ActiveTeleportVolume != null || !(args.interactableObject is TeleportationMultiAnchorVolume teleportVolume))
+            if (m_ActiveTeleportVolume != null ||
+                !(args.interactableObject is TeleportationMultiAnchorVolume teleportVolume))
                 return;
 
             m_ActiveTeleportVolume = teleportVolume;
@@ -107,7 +106,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
         void OnInteractorHoverExited(HoverExitEventArgs args)
         {
-            if (!(args.interactableObject is TeleportationMultiAnchorVolume teleportVolume) || teleportVolume != m_ActiveTeleportVolume)
+            if (!(args.interactableObject is TeleportationMultiAnchorVolume teleportVolume) ||
+                teleportVolume != m_ActiveTeleportVolume)
                 return;
 
             HideIndicator();
@@ -127,7 +127,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             var cameraTrans = teleportVolume.teleportationProvider.mediator.xrOrigin.Camera.transform;
             var cameraPosition = cameraTrans.position;
             var destinationPosition = destinationAnchor.position;
-            var destinationDirectionInScreenSpace = cameraTrans.InverseTransformDirection(destinationPosition - cameraPosition);
+            var destinationDirectionInScreenSpace =
+                cameraTrans.InverseTransformDirection(destinationPosition - cameraPosition);
             destinationDirectionInScreenSpace.z = 0f;
             var pointerDirection = cameraTrans.TransformDirection(destinationDirectionInScreenSpace).normalized;
             m_PointerInstance.position = destinationPosition - pointerDirection * m_PointerDistance;

@@ -15,7 +15,10 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
             "com.unity.render-pipelines.universal": "12.1.3"
         }
 
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "Queue" = "Transparent-1" "LightMode" = "Always" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline" "Queue" = "Transparent-1" "LightMode" = "Always" "IgnoreProjector" = "True" "RenderType" = "Transparent"
+        }
 
         ZWrite On
         ZTest LEqual
@@ -24,7 +27,10 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
 
         Pass
         {
-            Tags { "LightMode" = "UniversalForward" }
+            Tags
+            {
+                "LightMode" = "UniversalForward"
+            }
 
             HLSLPROGRAM
             #pragma vertex vert
@@ -37,9 +43,9 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
             SAMPLER(_MainTex);
 
             CBUFFER_START(UnityPerMaterial)
-            half _Alpha;
-            half _Blur;
-            half _GradientSize;
+                half _Alpha;
+                half _Blur;
+                half _GradientSize;
             CBUFFER_END
 
             struct appdata_t
@@ -78,9 +84,12 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
                 half fadeFromBorderAmount = 1 - clamp(0, 1, pow(uvMax, _GradientSize) * 2);
                 half3 reflectionDir = -normalize(GetWorldSpaceViewDir(input.worldPos));
                 half noise = tex2D(_MainTex, input.cleanUV).r;
-                half4 reflectionData = SAMPLE_TEXTURECUBE_LOD(unity_SpecCube0, samplerunity_SpecCube0, reflectionDir, 1.5);
+                half4 reflectionData = SAMPLE_TEXTURECUBE_LOD(unity_SpecCube0, samplerunity_SpecCube0, reflectionDir,
+                                                                          1.5);
                 half3 reflectionColor = DecodeHDREnvironment(reflectionData, unity_SpecCube0_HDR);
-                return half4(reflectionColor, clamp(0, 1 - pow((uvMax * 2), _GradientSize * (_Blur / 10)), fadeFromBorderAmount) * _Alpha * noise);
+                return half4(reflectionColor,
+                    clamp(0, 1 - pow((uvMax * 2), _GradientSize * (_Blur / 10)),
+          fadeFromBorderAmount) * _Alpha * noise);
             }
             ENDHLSL
         }
@@ -88,7 +97,10 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
 
     SubShader
     {
-        Tags{ "RenderPipeline" = " " "Queue" = "Transparent-1" "LightMode" = "Always" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+        Tags
+        {
+            "RenderPipeline" = " " "Queue" = "Transparent-1" "LightMode" = "Always" "IgnoreProjector" = "True" "RenderType" = "Transparent"
+        }
 
         ZWrite On
         ZTest LEqual
@@ -145,7 +157,9 @@ Shader "SpatialFramework/FauxBackgroundOverlayBlurURP"
                 half noise = tex2D(_MainTex, input.cleanUV).r;
                 half4 reflectionData = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, reflectionDir, 1.5);
                 half3 reflectionColor = DecodeHDR(reflectionData, unity_SpecCube0_HDR);
-                return half4(reflectionColor, clamp(0, 1 - pow((uvMax * 2), _GradientSize * (_Blur / 10)), fadeFromBorderAmount) * _Alpha * noise);
+                return half4(reflectionColor,
+                             clamp(0, 1 - pow((uvMax * 2), _GradientSize * (_Blur / 10)), fadeFromBorderAmount) * _Alpha
+                             * noise);
             }
             ENDCG
         }

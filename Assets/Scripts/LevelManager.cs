@@ -2,25 +2,28 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Management; 
+using UnityEngine.XR.Management;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private GameObject freeCamObject;    
-    [SerializeField] private GameObject playerObject;     
-    [SerializeField] private GameObject editorUI;         
+    [Header("References")] [SerializeField]
+    private GameObject freeCamObject;
+
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject editorUI;
     [SerializeField] private GameObject speech;
     [SerializeField] private GameObject rotatingCamera;
     [SerializeField] private MindfulnessAudioManager speechManager;
     [SerializeField] private GameObject mainMenuButtonsUI;
     [SerializeField] private GameObject exitPlayModeButton;
-    [SerializeField] private List<GameObject> audioInSceneList;
-        
+    [SerializeField] private List<GameObject> audioInSceneList = new List<GameObject>();
+
+    [SerializeField] private InteractionController interactionController;
+    
     private void Start()
     {
         speechManager = speech.GetComponent<MindfulnessAudioManager>();
-        
+
         StartCoroutine(SwitchToDesktopMode());
 
         StateManager.Instance.OnStateChanged += HandleStateChange;
@@ -44,11 +47,18 @@ public class LevelManager : MonoBehaviour
 
                 editorUI.SetActive(true);
                 speech.SetActive(false);
-                if(speechManager != null) speechManager.StopSpeech();
+                if (speechManager != null) speechManager.StopSpeech();
                 exitPlayModeButton.SetActive(false);
                 mainMenuButtonsUI.SetActive(false);
                 
-                ShowAudioIcons(true);
+                freeCamObject.SetActive(true);
+                rotatingCamera.SetActive(false);
+                playerObject.SetActive(false);
+                
+                if(interactionController != null)
+                    interactionController.EnableInteraction(true);
+                
+                EnableAudioObjectCollider(true);
                 SetRandomAudioActive(false);
                 break;
 
@@ -57,27 +67,42 @@ public class LevelManager : MonoBehaviour
 
                 speech.SetActive(true);
                 exitPlayModeButton.SetActive(true);
-                if(speechManager != null) speechManager.StartSpeech();
-                
+                if (speechManager != null) speechManager.StartSpeech();
+
                 editorUI.SetActive(false);
                 mainMenuButtonsUI.SetActive(false);
 
-                ShowAudioIcons(false);
+                freeCamObject.SetActive(false);
+                rotatingCamera.SetActive(false);
+                playerObject.SetActive(true);
+                
+                
+                if(interactionController != null)
+                    interactionController.EnableInteraction(false);
+                
+                EnableAudioObjectCollider(false);
                 SetRandomAudioActive(true);
                 break;
-            
+
             case State.MainMenu:
                 StartCoroutine(SwitchToDesktopMode());
 
                 rotatingCamera.SetActive(true);
-                
+
                 editorUI.SetActive(false);
                 exitPlayModeButton.SetActive(false);
-                if(speechManager != null) speechManager.StopSpeech();
+                if (speechManager != null) speechManager.StopSpeech();
                 speech.SetActive(false);
                 mainMenuButtonsUI.SetActive(true);
 
-                ShowAudioIcons(false);
+                freeCamObject.SetActive(false);
+                rotatingCamera.SetActive(true);
+                playerObject.SetActive(false);
+                
+                if(interactionController != null)
+                    interactionController.EnableInteraction(false);
+                
+                EnableAudioObjectCollider(false);
                 SetRandomAudioActive(false);
                 break;
         }
@@ -86,8 +111,6 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SwitchToVRMode()
     {
-        freeCamObject.SetActive(false);
-        rotatingCamera.SetActive(false);
 
         if (XRGeneralSettings.Instance.Manager.activeLoader == null)
         {
@@ -98,8 +121,7 @@ public class LevelManager : MonoBehaviour
         if (XRGeneralSettings.Instance.Manager.activeLoader != null)
         {
             XRGeneralSettings.Instance.Manager.StartSubsystems();
-            
-            playerObject.SetActive(true);
+
             Debug.Log("Modalità VR Attiva");
         }
         else
@@ -111,8 +133,6 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SwitchToDesktopMode()
     {
-        playerObject.SetActive(false);
-
         if (XRGeneralSettings.Instance.Manager.isInitializationComplete)
         {
             Debug.Log("Spegnimento VR...");
@@ -120,15 +140,10 @@ public class LevelManager : MonoBehaviour
             XRGeneralSettings.Instance.Manager.DeinitializeLoader();
         }
 
-        if (StateManager.Instance.CurrentState == State.Editing)
-        {
-            freeCamObject.SetActive(true);
-        }
-
-        yield return null; 
+        yield return null;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
+
         Debug.Log("Modalità Desktop Attiva (Mouse Sbloccato)");
     }
 
@@ -150,7 +165,7 @@ public class LevelManager : MonoBehaviour
 
     public void AddSoundToList(GameObject soundObject)
     {
-        if(soundObject == null) return;
+        if (soundObject == null) return;
         if (audioInSceneList == null) return;
         audioInSceneList.Add(soundObject);
     }
@@ -162,13 +177,13 @@ public class LevelManager : MonoBehaviour
         audioInSceneList.Remove(soundObject);
     }
 
-    public void ShowAudioIcons(bool show)
+    public void EnableAudioObjectCollider(bool enable)
     {
         foreach (GameObject soundObject in audioInSceneList)
         {
             RandomizeAudio randomize = soundObject.GetComponent<RandomizeAudio>();
             if (randomize != null)
-                randomize.EnableMeshAndCollider(show);
+                randomize.EnableCollider(enable);
         }
     }
 
@@ -188,5 +203,14 @@ public class LevelManager : MonoBehaviour
     public GameObject GetFreeCam()
     {
         return freeCamObject;
+    }
+
+
+    public void ClearAudioList()
+    {
+        if (audioInSceneList != null)
+        {
+            audioInSceneList.Clear();
+        }
     }
 }

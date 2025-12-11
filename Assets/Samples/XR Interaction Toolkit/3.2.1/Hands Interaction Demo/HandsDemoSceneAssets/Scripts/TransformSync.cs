@@ -8,13 +8,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     /// </summary>
     public class TransformSync : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Transform to apply this transform's data to.")]
+        [SerializeField] [Tooltip("Transform to apply this transform's data to.")]
         Transform m_TargetTransform;
 
-        [SerializeField]
-        [Range(0f, 30f)]
-        [Tooltip("Set to 0 for no smoothing. Higher values indicate more smoothing.")]
+        [SerializeField] [Range(0f, 30f)] [Tooltip("Set to 0 for no smoothing. Higher values indicate more smoothing.")]
         float m_SmoothFollowSpeed = 8f;
 
         Rigidbody m_Rigidbody;
@@ -60,6 +57,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
                 enabled = false;
                 return;
             }
+
             m_HasTransform = true;
 
             if (m_TargetTransform.TryGetComponent(out Rigidbody rigidBodyComponent))

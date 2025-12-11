@@ -2,16 +2,19 @@ using System;
 using UnityEngine;
 
 
-public enum State{
+public enum State
+{
     MainMenu,
     Editing,
     Playing
 }
+
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance { get; private set; }
     public State CurrentState { get; private set; }
     public event Action<State> OnStateChanged;
+
     private void Awake()
     {
         if (Instance == null)

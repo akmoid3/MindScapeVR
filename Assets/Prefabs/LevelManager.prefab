@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9058722962833152793}
   - component: {fileID: 334812204279698441}
   - component: {fileID: 4927479832127478372}
+  - component: {fileID: 7387703231826184390}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -54,6 +55,7 @@ MonoBehaviour:
   speechManager: {fileID: 0}
   mainMenuButtonsUI: {fileID: 0}
   exitPlayModeButton: {fileID: 0}
+  audioInSceneList: []
 --- !u!114 &334812204279698441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +78,8 @@ MonoBehaviour:
   scaleSpeed: 0.1
   minScale: 0.01
   maxScale: 10
+  audioUI: {fileID: 0}
+  deleteUI: {fileID: 0}
 --- !u!114 &4927479832127478372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +96,22 @@ MonoBehaviour:
   intensitySlider: {fileID: 0}
   yRotSlider: {fileID: 0}
   xRotSlider: {fileID: 0}
+  intensityValueText: {fileID: 0}
+  yRotValueText: {fileID: 0}
+  xRotValueText: {fileID: 0}
+  length: 2
+--- !u!114 &7387703231826184390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878145721315171505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb35ceab47616a4a94f15f682ccdba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSaveSystem
+  levelManager: {fileID: 9058722962833152793}
+  modelParent: {fileID: 0}
+  audioPrefab: {fileID: 1106567387334408393, guid: 2718996c490761b4ab8f83b694f8a9c3, type: 3}

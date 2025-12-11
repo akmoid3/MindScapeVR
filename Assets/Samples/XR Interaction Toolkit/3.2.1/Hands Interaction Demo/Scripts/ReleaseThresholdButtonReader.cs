@@ -10,8 +10,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
     [DefaultExecutionOrder(XRInteractionUpdateOrder.k_XRInputDeviceButtonReader)]
     public class ReleaseThresholdButtonReader : MonoBehaviour, IXRInputButtonReader
     {
-        [SerializeField]
-        [Tooltip("The source input that this component reads to create a processed button value.")]
+        [SerializeField] [Tooltip("The source input that this component reads to create a processed button value.")]
         XRInputButtonReader m_ValueInput = new XRInputButtonReader("Value");
 
         /// <summary>
@@ -24,7 +23,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
         [SerializeField]
-        [Tooltip("The threshold value to use to determine when the button is pressed. Considered pressed equal to or greater than this value.")]
+        [Tooltip(
+            "The threshold value to use to determine when the button is pressed. Considered pressed equal to or greater than this value.")]
         [Range(0f, 1f)]
         float m_PressThreshold = 0.8f;
 
@@ -41,7 +41,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         }
 
         [SerializeField]
-        [Tooltip("The threshold value to use to determine when the button is released when it was previously pressed. Keeps being pressed until falls back to a value of or below this value.")]
+        [Tooltip(
+            "The threshold value to use to determine when the button is released when it was previously pressed. Keeps being pressed until falls back to a value of or below this value.")]
         [Range(0f, 1f)]
         float m_ReleaseThreshold = 0.25f;
 

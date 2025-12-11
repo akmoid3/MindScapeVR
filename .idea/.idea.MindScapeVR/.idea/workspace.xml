@@ -5,20 +5,129 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SoundPrefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/SoundPrefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GeneratedObjectInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GeneratedObjectInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/LevelSaveSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/LevelSaveSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Prefabs/XR Origin (XR Rig).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Prefabs/XR Origin (XR Rig).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LevelManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LevelManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RotatingCamera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RotatingCamera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SoundPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SoundPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/HandProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/HandProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/HandVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/HandVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/JointVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/JointVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/MaterialPipelineHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.6.1/HandVisualizer/Scripts/MaterialPipelineHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Editor/Scripts/HandsSampleProjectValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Editor/Scripts/HandsSampleProjectValidation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/ObjectResetPlane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/ObjectResetPlane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/PokeBlendShapeAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/PokeBlendShapeAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/ToggleGameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/ToggleGameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/TransformSync.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/HandsDemoSceneAssets/Scripts/TransformSync.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/HandsOneEuroFilterPostProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/HandsOneEuroFilterPostProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/HideObjectWhenInteractorBlocked.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/HideObjectWhenInteractorBlocked.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/LocalPositionOffsetAffordanceReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/LocalPositionOffsetAffordanceReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/MetaSystemGestureDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/MetaSystemGestureDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/OneEuroFilterVector3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/OneEuroFilterVector3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/PinchPointFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/PinchPointFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/PokeGestureDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/PokeGestureDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/ReleaseThresholdButtonReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/ReleaseThresholdButtonReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/ValueDerivedButtonReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/ValueDerivedButtonReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/Vector3ScaleAffordanceReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Scripts/Vector3ScaleAffordanceReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Shaders/DepthOnly.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Hands Interaction Demo/Shaders/DepthOnly.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/IncrementUIText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/IncrementUIText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/MultiAnchorTeleportReticle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/MultiAnchorTeleportReticle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerInputActionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerInputActionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DestroySelf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DestroySelf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DynamicMoveProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DynamicMoveProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/GazeInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/GazeInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/MaterialPipelineHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/MaterialPipelineHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ObjectSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ObjectSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PermissionsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PermissionsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PlatformUnderstanding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PlatformUnderstanding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ToggleColorToggler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ToggleColorToggler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/BiRP_Fresnel.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/BiRP_Fresnel.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/UI-NoZTest.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/UI-NoZTest.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/TunnelingVignette/TunnelingVignette.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/TunnelingVignette/TunnelingVignette.shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioGenClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioGenClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/HunyuanWorldClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HunyuanWorldClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LookAtCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LookAtCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MindfulnessAudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MindfulnessAudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RandomizeAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RandomizeAudio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RotatingCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RotatingCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLightUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLightUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/BasicScene.scenetemplate" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/BasicScene.scenetemplate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Performance URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Performance URP Config.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Quality URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/Quality URP Config.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Project Configuration/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Project Configuration/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Materials/Skybox/Horizontal Skybox.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Materials/Skybox/Horizontal Skybox.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/AnchorVisuals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/BezierCurve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/BezierCurve.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/BooleanToggleVisualsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/Callout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/Callout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/CalloutGazeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/DestroyObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/DestroyObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/HandSubsystemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/HandSubsystemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/LaunchProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/RayAttachModifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/Rotator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/Rotator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/StepManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/VideoPlayerRenderTexture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/VideoTimeScrubControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/XRKnob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/XRKnob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Scripts/XRPokeFollowAffordanceFill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/FauxBlurURP.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/FauxBlurURP.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/Grid.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/Grid.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/TexturedFresnelStandard.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/TexturedFresnelStandard.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/TexturedStableFresnelCommon.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VRTemplateAssets/Shaders/TexturedStableFresnelCommon.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VertexColor.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VertexColor.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.learn.iet-framework/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.learn.iet-framework/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +140,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioGenClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GeneratedObjectInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HunyuanWorldClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,7 +152,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLightUIController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VertexColor.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@bc6f352be672/ShaderLibrary/Input.hlsl" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -54,23 +163,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;worldgeneration&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "worldgeneration",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../nuovabuild\MindScapeVR.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Build\MindScapeVR.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\akmoi\Desktop\PROVABUILD" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -82,7 +192,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.0f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\akmoi\Desktop\MindScapeVR -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\akmoi\Desktop\MindScapeVR" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -94,7 +204,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.0f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\akmoi\Desktop\MindScapeVR -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\akmoi\Desktop\MindScapeVR" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -157,6 +267,7 @@
       <workItem from="1764789557809" duration="9078000" />
       <workItem from="1765045347883" duration="1314000" />
       <workItem from="1765306464099" duration="14330000" />
+      <workItem from="1765467398026" duration="13060000" />
     </task>
     <servers />
   </component>

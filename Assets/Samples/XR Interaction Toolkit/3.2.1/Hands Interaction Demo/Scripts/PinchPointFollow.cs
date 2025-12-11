@@ -32,14 +32,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
         [Tooltip("The transform will use the NearFarInteractor endpoint position to calculate the transform rotation.")]
         NearFarInteractor m_NearFarInteractor;
 
-        [Header("Rotation Config")]
-        [SerializeField]
-        [Tooltip("The transform to match the rotation of.")]
+        [Header("Rotation Config")] [SerializeField] [Tooltip("The transform to match the rotation of.")]
         Transform m_TargetRotation;
 
-        [SerializeField]
-        [Tooltip("How fast to match rotation (0 means no rotation smoothing.)")]
-        [Range(0f, 32f)]
+        [SerializeField] [Tooltip("How fast to match rotation (0 means no rotation smoothing.)")] [Range(0f, 32f)]
 #pragma warning disable CS0414 // Field assigned but its value is never used -- Keep to retain serialized value when XR Hands is not installed
         float m_RotationSmoothingSpeed = 12f;
 #pragma warning restore CS0414
@@ -71,13 +67,16 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
                 m_RayProvider = m_RayInteractor;
                 m_HasRayProvider = true;
             }
+
             if (m_NearFarInteractor != null)
             {
                 m_RayProvider = m_NearFarInteractor;
                 m_HasRayProvider = true;
             }
+
             m_HasTargetRotationTransform = m_TargetRotation != null;
-            m_BindingsGroup.AddBinding(m_QuaternionTweenableVariable.Subscribe(newValue => transform.rotation = newValue));
+            m_BindingsGroup.AddBinding(
+                m_QuaternionTweenableVariable.Subscribe(newValue => transform.rotation = newValue));
 #else
             Debug.LogWarning("PinchPointFollow requires XR Hands (com.unity.xr.hands) 1.2.0 or newer. Disabling component.", this);
             enabled = false;

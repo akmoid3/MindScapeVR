@@ -30,6 +30,7 @@ public class AudioGenClient : MonoBehaviour
     [Serializable]
     private class GenerateResponse
     {
+        public string job_id;
         public bool success;
         public string error;
         public FileInfo[] files;
@@ -88,7 +89,7 @@ public class AudioGenClient : MonoBehaviour
     {
         SetButtonState(true);
 
-     
+
         GenerateRequest request = new GenerateRequest { text = description, duration = duration };
         string json = JsonConvert.SerializeObject(request);
         byte[] body = System.Text.Encoding.UTF8.GetBytes(json);
@@ -117,6 +118,8 @@ public class AudioGenClient : MonoBehaviour
                 SetButtonState(false);
                 yield break;
             }
+
+            string job_id = response.job_id;
 
             string audioUrl = null;
             string filename = null;
@@ -148,26 +151,30 @@ public class AudioGenClient : MonoBehaviour
                     yield break;
                 }
 
-                // Salva su disco (opzionale)
-                if (saveToFile)
-                {
-                    string folderPath = Path.Combine(Application.persistentDataPath, "GeneratedAudio");
-                    Directory.CreateDirectory(folderPath);
-                    string shortName = description.Length > 5 ? description.Substring(0, 5) : description;
-                    string filePath = Path.Combine(folderPath, shortName + "_" + filename);
-                    File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
-                    Debug.Log($"Saved: {filePath}");
-                }
+
+                string folderPath = Path.Combine(Application.persistentDataPath, "GeneratedAudio");
+                Directory.CreateDirectory(folderPath);
+
+                string filePath = Path.Combine(folderPath, job_id);
+                File.WriteAllBytes(filePath, downloadWww.downloadHandler.data);
+                Debug.Log($"Saved: {filePath}");
 
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(downloadWww);
                 if (clip != null)
                 {
                     GameObject go = Instantiate(audioPrefab);
+
+                    var info = go.AddComponent<GeneratedObjectInfo>();
+                    info.type = GenerationType.Audio;
+                    info.fileName = job_id;
+                    info.isLooping = false;
+
                     AudioSource audioSource = go.GetComponent<AudioSource>();
-                    if(audioSource == null)
+                    if (audioSource == null)
                     {
                         audioSource = go.AddComponent<AudioSource>();
                     }
+
                     audioSource.clip = clip;
                     audioSource.spatialBlend = 1f;
                     audioSource.minDistance = 1f;

@@ -5,14 +5,11 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
 {
     public class JointVisualizer : MonoBehaviour
     {
-        [SerializeField]
-        GameObject m_JointVisual;
+        [SerializeField] GameObject m_JointVisual;
 
-        [SerializeField]
-        Material m_HighFidelityJointMaterial;
+        [SerializeField] Material m_HighFidelityJointMaterial;
 
-        [SerializeField]
-        Material m_LowFidelityJointMaterial;
+        [SerializeField] Material m_LowFidelityJointMaterial;
 
         bool m_HighFidelityJoint;
 
@@ -20,7 +17,8 @@ namespace UnityEngine.XR.Hands.Samples.VisualizerSample
 
         public void NotifyTrackingState(XRHandJointTrackingState jointTrackingState)
         {
-            bool highFidelityJoint = (jointTrackingState & XRHandJointTrackingState.HighFidelityPose) == XRHandJointTrackingState.HighFidelityPose;
+            bool highFidelityJoint = (jointTrackingState & XRHandJointTrackingState.HighFidelityPose) ==
+                                     XRHandJointTrackingState.HighFidelityPose;
             if (m_HighFidelityJoint == highFidelityJoint)
                 return;
 

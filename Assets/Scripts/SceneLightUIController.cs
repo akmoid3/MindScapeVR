@@ -5,20 +5,17 @@ using TMPro;
 
 public class SceneLightUIController : MonoBehaviour
 {
-    [Header("Light")]
-    public Light targetLight;            
+    [Header("Light")] public Light targetLight;
 
-    [Header("UI Sliders")]
-    public Slider intensitySlider;
-    public Slider yRotSlider;          
-    public Slider xRotSlider;       
+    [Header("UI Sliders")] public Slider intensitySlider;
+    public Slider yRotSlider;
+    public Slider xRotSlider;
 
-    [Header("UI Texts (TMP)")]
-    public TMP_Text intensityValueText;
+    [Header("UI Texts (TMP)")] public TMP_Text intensityValueText;
     public TMP_Text yRotValueText;
     public TMP_Text xRotValueText;
-    
-    
+
+
     public float length = 2f;
 
     private LineRenderer lr;
@@ -64,7 +61,7 @@ public class SceneLightUIController : MonoBehaviour
         if (intensitySlider != null)
         {
             intensitySlider.minValue = 0f;
-            intensitySlider.maxValue = 5f; 
+            intensitySlider.maxValue = 5f;
             intensitySlider.value = targetLight.intensity;
             intensitySlider.onValueChanged.AddListener(OnIntensityChanged);
         }
@@ -92,7 +89,7 @@ public class SceneLightUIController : MonoBehaviour
                 xRotSlider.onValueChanged.AddListener(OnXRotChanged);
             }
         }
-        
+
         if (intensityValueText != null)
             intensityValueText.text = intensitySlider.value.ToString("0.00");
 
@@ -101,7 +98,6 @@ public class SceneLightUIController : MonoBehaviour
 
         if (xRotValueText != null)
             xRotValueText.text = xRotSlider.value.ToString("0");
-
     }
 
     private void OnDestroy()
@@ -118,7 +114,7 @@ public class SceneLightUIController : MonoBehaviour
     {
         if (targetLight == null) return;
         targetLight.intensity = value;
-        
+
         if (intensityValueText != null)
             intensityValueText.text = value.ToString("0.00");
     }
@@ -148,5 +144,35 @@ public class SceneLightUIController : MonoBehaviour
             xRotValueText.text = value.ToString("0");
     }
     
+    public void UpdateUIFromLight()
+    {
+        if (targetLight == null) return;
 
+        if (intensitySlider != null)
+        {
+            intensitySlider.SetValueWithoutNotify(targetLight.intensity);
+            if (intensityValueText != null) 
+                intensityValueText.text = targetLight.intensity.ToString("0.00");
+        }
+
+        Vector3 euler = targetLight.transform.rotation.eulerAngles;
+
+        if (yRotSlider != null)
+        {
+            yRotSlider.SetValueWithoutNotify(euler.y);
+            if (yRotValueText != null)
+                yRotValueText.text = euler.y.ToString("0");
+        }
+
+        if (xRotSlider != null)
+        {
+            float x = euler.x;
+            if (x > 180f) x -= 360f;
+            float clampedX = Mathf.Clamp(x, -90f, 90f);
+        
+            xRotSlider.SetValueWithoutNotify(clampedX);
+            if (xRotValueText != null)
+                xRotValueText.text = clampedX.ToString("0");
+        }
+    }
 }
