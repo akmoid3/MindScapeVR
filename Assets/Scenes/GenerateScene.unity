@@ -188,6 +188,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5656403605739582727, guid: 94048a4375c8071449b565cce14926f8, type: 3}
   m_PrefabInstance: {fileID: 5063278954882918918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &141668279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2520501691914232147, guid: 94048a4375c8071449b565cce14926f8, type: 3}
+  m_PrefabInstance: {fileID: 5063278954882918918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &281165293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6081240614438825955, guid: 94048a4375c8071449b565cce14926f8, type: 3}
@@ -1892,6 +1897,10 @@ PrefabInstance:
       propertyPath: mainMenuButtonsUI
       value: 
       objectReference: {fileID: 281165294}
+    - target: {fileID: 9058722962833152793, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
+      propertyPath: blackScreenOverlay
+      value: 
+      objectReference: {fileID: 141668279}
     - target: {fileID: 9058722962833152793, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
       propertyPath: exitPlayModeButton
       value: 
