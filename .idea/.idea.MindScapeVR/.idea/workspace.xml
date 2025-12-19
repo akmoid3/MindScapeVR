@@ -6,11 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CanvasWithStyle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CameraController.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +25,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioGenClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GeneratedObjectInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,7 +55,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;worldgeneration&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tests&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -63,7 +67,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../Buildcamerafix\MindScapeVR.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../BuildFinale\MindScapeVR.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\akmoi\Desktop\PROVABUILD" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -153,6 +157,8 @@
       <workItem from="1765467398026" duration="13115000" />
       <workItem from="1765728356725" duration="1689000" />
       <workItem from="1765730338328" duration="782000" />
+      <workItem from="1765755269976" duration="5773000" />
+      <workItem from="1766002250645" duration="2000" />
     </task>
     <servers />
   </component>
