@@ -949,6 +949,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
+      propertyPath: serverUrl
+      value: http://195.26.233.55:38067
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: buttonText
       value: 
       objectReference: {fileID: 873023352}
@@ -960,6 +964,10 @@ PrefabInstance:
       propertyPath: generateButton
       value: 
       objectReference: {fileID: 873023353}
+    - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
+      propertyPath: targetPolyCount
+      value: 40000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1243,6 +1251,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
+      propertyPath: serverUrl
+      value: 'http://195.26.233.55:38068  '
+      objectReference: {fileID: 0}
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: buttonText
       value: 

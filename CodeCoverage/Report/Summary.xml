@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>15/12/2025 - 02:25:16</Generatedon>
+    <Generatedon>25/12/2025 - 02:19:39</Generatedon>
     <Parser>MultiReportParser (3x OpenCoverParser)</Parser>
     <Assemblies>1</Assemblies>
-    <Classes>15</Classes>
-    <Files>15</Files>
-    <Coveredlines>223</Coveredlines>
-    <Uncoveredlines>1273</Uncoveredlines>
-    <Coverablelines>1496</Coverablelines>
-    <Totallines>4340</Totallines>
-    <Linecoverage>14.9</Linecoverage>
+    <Classes>14</Classes>
+    <Files>14</Files>
+    <Coveredlines>135</Coveredlines>
+    <Uncoveredlines>1020</Uncoveredlines>
+    <Coverablelines>1155</Coverablelines>
+    <Totallines>2008</Totallines>
+    <Linecoverage>11.6</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>32</Coveredmethods>
-    <Totalmethods>193</Totalmethods>
-    <Methodcoverage>16.5</Methodcoverage>
+    <Coveredmethods>23</Coveredmethods>
+    <Totalmethods>115</Totalmethods>
+    <Methodcoverage>20</Methodcoverage>
   </Summary>
   <Coverage>
-    <Assembly name="Scripts" classes="15" coverage="14.9" coveredlines="223" coverablelines="1496" totallines="4340" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="32" totalmethods="193" methodcoverage="16.5">
+    <Assembly name="Scripts" classes="14" coverage="11.6" coveredlines="135" coverablelines="1155" totallines="2008" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="23" totalmethods="115" methodcoverage="20">
       <Class name="AudioGenClient" coverage="0" coveredlines="0" coverablelines="112" totallines="198" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
-      <Class name="CameraController" coverage="0" coveredlines="0" coverablelines="340" totallines="2330" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="80" methodcoverage="0" />
       <Class name="FreeSceneCamera" coverage="0" coveredlines="0" coverablelines="56" totallines="107" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
       <Class name="Hunyuan3DClient" coverage="0" coveredlines="0" coverablelines="119" totallines="228" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
       <Class name="HunyuanWorldClient" coverage="0" coveredlines="0" coverablelines="183" totallines="304" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="12" methodcoverage="0" />
-      <Class name="InteractionController" coverage="0" coveredlines="0" coverablelines="159" totallines="262" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="16" methodcoverage="0" />
-      <Class name="LevelManager" coverage="0" coveredlines="0" coverablelines="162" totallines="262" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="20" methodcoverage="0" />
-      <Class name="LevelSaveSystem" coverage="0" coveredlines="0" coverablelines="123" totallines="227" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
-      <Class name="LookAtCamera" coverage="100" coveredlines="7" coverablelines="7" totallines="18" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+      <Class name="InteractionController" coverage="75.9" coveredlines="120" coverablelines="158" totallines="259" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="17" totalmethods="18" methodcoverage="94.4" />
+      <Class name="LevelManager" coverage="8.6" coveredlines="14" coverablelines="162" totallines="262" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="20" methodcoverage="20" />
+      <Class name="LevelSaveSystem" coverage="0" coveredlines="0" coverablelines="123" totallines="228" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
+      <Class name="LookAtCamera" coverage="0" coveredlines="0" coverablelines="7" totallines="18" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
       <Class name="MainMenu" coverage="0" coveredlines="0" coverablelines="19" totallines="41" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
-      <Class name="MindfulnessAudioManager" coverage="100" coveredlines="41" coverablelines="41" totallines="69" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
-      <Class name="RandomizeAudio" coverage="100" coveredlines="37" coverablelines="37" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
-      <Class name="RotatingCamera" coverage="100" coveredlines="6" coverablelines="6" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
-      <Class name="SceneLightUIController" coverage="100" coveredlines="115" coverablelines="115" totallines="178" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100" />
-      <Class name="StateManager" coverage="100" coveredlines="17" coverablelines="17" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100" />
+      <Class name="MindfulnessAudioManager" coverage="0" coveredlines="0" coverablelines="41" totallines="69" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="RandomizeAudio" coverage="0" coveredlines="0" coverablelines="37" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="RotatingCamera" coverage="0" coveredlines="0" coverablelines="6" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="SceneLightUIController" coverage="0" coveredlines="0" coverablelines="115" totallines="178" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="9" methodcoverage="0" />
+      <Class name="StateManager" coverage="5.8" coveredlines="1" coverablelines="17" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="7" methodcoverage="28.5" />
     </Assembly>
   </Coverage>
 </CoverageReport>

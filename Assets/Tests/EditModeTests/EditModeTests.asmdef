@@ -2,9 +2,10 @@
     "name": "EditModeTests",
     "rootNamespace": "",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "Scripts"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:7a096f71b291e3b4ebd650f66c20c573",
+        "GUID:a42927d1d4a3b4cda9b076a7adecb9cc"
     ],
     "includePlatforms": [
         "Editor"

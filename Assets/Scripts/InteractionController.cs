@@ -6,29 +6,26 @@ using UnityEngine.UI; // Necessario per gestire il Toggle
 
 public class InteractionController : MonoBehaviour
 {
-    [Header("References")] 
-    public Camera mainCamera;
+    [Header("References")] public Camera mainCamera;
     public LayerMask selectableLayer;
 
-    [Header("Drag Settings")] 
-    public float dragDistance = 5f;
+    [Header("Drag Settings")] public float dragDistance = 5f;
     public float dragSmooth = 10f;
 
-    [Header("Rotation")] 
-    public float rotationSpeed = 120f;
+    [Header("Rotation")] public float rotationSpeed = 120f;
 
-    [Header("Scaling")] 
-    public float scaleSpeed = 0.1f;
+    [Header("Scaling")] public float scaleSpeed = 0.1f;
     public float minScale = 0.001f;
     public float maxScale = 10f;
 
-    [Header("UI References")]
-    [SerializeField] private GameObject audioUI;
+    [Header("UI References")] [SerializeField]
+    private GameObject audioUI;
+
     [SerializeField] private GameObject deleteUI;
 
     private CameraController controls;
     private Vector2 pointerPosition;
-    
+
     private bool dragging;
     private bool isClickingUI;
     private float rotateInput;
@@ -46,23 +43,20 @@ public class InteractionController : MonoBehaviour
         controls.Builder.PointerPosition.canceled += _ =>
             pointerPosition = Vector2.zero;
 
-        controls.Builder.Select.started += _ => 
+        controls.Builder.Select.started += _ =>
         {
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             {
-                isClickingUI = true; 
+                isClickingUI = true;
             }
             else
             {
-                isClickingUI = false; 
+                isClickingUI = false;
                 OnSelect();
             }
         };
 
-        controls.Builder.Select.canceled += _ => 
-        {
-            isClickingUI = false; 
-        };
+        controls.Builder.Select.canceled += _ => { isClickingUI = false; };
 
         controls.Builder.Drag.performed += _ => { dragging = true; };
         controls.Builder.Drag.canceled += _ => { dragging = false; };
@@ -86,7 +80,7 @@ public class InteractionController : MonoBehaviour
         if (audioUI) audioUI.SetActive(false);
         if (deleteUI) deleteUI.SetActive(false);
     }
-    
+
     public void EnableInteraction(bool enable)
     {
         if (enable)
@@ -96,14 +90,14 @@ public class InteractionController : MonoBehaviour
         else
         {
             controls.Disable();
-            
+
             // dragging = false;
             // rotateInput = 0f;
             // scaleInput = 0f;
-            
+
             selectedObject = null;
-            if(audioUI) audioUI.SetActive(false);
-            if(deleteUI) deleteUI.SetActive(false);
+            if (audioUI) audioUI.SetActive(false);
+            if (deleteUI) deleteUI.SetActive(false);
         }
     }
 
@@ -114,43 +108,46 @@ public class InteractionController : MonoBehaviour
         HandleScaling();
     }
 
+    private void ApplySelection(GameObject hitObject, Vector3 hitPoint)
+    {
+        selectedObject = hitObject;
+        float dist = Vector3.Distance(mainCamera.transform.position, hitPoint);
+        dragDistance = dist;
+        if (selectedObject.CompareTag("Audio") && audioUI)
+        {
+            audioUI.SetActive(true);
+
+            AudioSource source = selectedObject.GetComponent<AudioSource>();
+            Toggle uiToggle = audioUI.GetComponentInChildren<Toggle>();
+
+            if (source != null && uiToggle != null)
+            {
+                uiToggle.SetIsOnWithoutNotify(source.loop);
+            }
+        }
+        else
+        {
+            if (audioUI) audioUI.SetActive(false);
+        }
+        if (deleteUI) deleteUI.SetActive(true);
+    }
+
+    private void ClearSelection()
+    {
+        selectedObject = null;
+        if (audioUI) audioUI.SetActive(false);
+        if (deleteUI) deleteUI.SetActive(false);
+    }
+
     private void OnSelect()
     {
-
         if (mainCamera == null) return;
 
         Ray ray = mainCamera.ScreenPointToRay(pointerPosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, selectableLayer))
-        {
-            selectedObject = hit.collider.gameObject;
-            float dist = Vector3.Distance(mainCamera.transform.position, hit.point);
-            dragDistance = dist;
-
-            if (selectedObject.CompareTag("Audio") && audioUI)
-            {
-                audioUI.SetActive(true);
-
-                AudioSource source = selectedObject.GetComponent<AudioSource>();
-                Toggle uiToggle = audioUI.GetComponentInChildren<Toggle>();
-
-                if (source != null && uiToggle != null)
-                {
-                    uiToggle.SetIsOnWithoutNotify(source.loop);
-                }
-            }
-            else
-            {
-                audioUI.SetActive(false);
-            }
-
-            deleteUI.SetActive(true);
-        }
+            ApplySelection(hit.collider.gameObject, hit.point);
         else
-        {
-            selectedObject = null;
-            audioUI.SetActive(false);
-            deleteUI.SetActive(false);
-        }
+            ClearSelection();
     }
 
     private void HandleDragging()
@@ -174,7 +171,7 @@ public class InteractionController : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (IsTypingInInputField()) return; 
+        if (IsTypingInInputField()) return;
 
         if (selectedObject == null || Mathf.Abs(rotateInput) < 0.0001f)
             return;
@@ -200,7 +197,7 @@ public class InteractionController : MonoBehaviour
         selectedObject.transform.localScale = s;
     }
 
-    
+
     private bool IsTypingInInputField()
     {
         if (EventSystem.current == null) return false;
@@ -223,6 +220,7 @@ public class InteractionController : MonoBehaviour
             {
                 levelManager.RemoveSoundFromList(selectedObject);
             }
+
             audioUI.SetActive(false);
         }
 
@@ -244,13 +242,12 @@ public class InteractionController : MonoBehaviour
     public void SetAudioLoop(bool enableLoop)
     {
         if (selectedObject == null) return;
-        
+
         AudioSource audioSource = selectedObject.GetComponent<AudioSource>();
         if (audioSource != null)
         {
             audioSource.loop = enableLoop;
             Debug.Log($"Loop impostato a: {enableLoop} per {selectedObject.name}");
-            
         }
     }
 

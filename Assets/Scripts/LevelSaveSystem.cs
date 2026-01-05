@@ -15,6 +15,7 @@ public class LevelSaveSystem : MonoBehaviour
     [SerializeField] private GameObject audioPrefab;
     [SerializeField] private Light sceneDirectionalLight; 
     [SerializeField] private SceneLightUIController lightUIController; 
+    
     [Serializable]
     public class SceneData
     {
@@ -112,7 +113,7 @@ public class LevelSaveSystem : MonoBehaviour
         StartCoroutine(LoadSceneCoroutine(path));
     }
 
-    private IEnumerator LoadSceneCoroutine(string path)
+    public IEnumerator LoadSceneCoroutine(string path)
     {
         GeneratedObjectInfo[] oldObjects = FindObjectsOfType<GeneratedObjectInfo>();
         foreach (var old in oldObjects) Destroy(old.gameObject);

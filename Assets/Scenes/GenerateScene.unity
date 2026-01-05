@@ -1641,6 +1641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1249617917}
     - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
+      propertyPath: serverUrl
+      value: http://195.26.233.55:46661
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
       propertyPath: inputField
       value: 
       objectReference: {fileID: 470839549}
@@ -2888,7 +2892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: serverUrl
-      value: http://127.0.0.1:9292
+      value: http://195.26.233.55:46659
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: inputField
@@ -3996,6 +4000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
+      propertyPath: serverUrl
+      value: http://195.26.233.55:46660
+      objectReference: {fileID: 0}
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: inputField
       value: 

@@ -6,14 +6,57 @@
   <component name="ChangeListManager">
     <list default="true" id="4a960644-d1f0-4e3f-bb37-199aaeba39f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MindScapeVR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Beach.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/BeachAudio/seagulls_only.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/BeachAudio/seagulls_only.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Beach.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Beach.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Countryside.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Countryside.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnvironmentMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnvironmentMaterial.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Countryside.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GenerateScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InteractionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelSaveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelSaveSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scripts.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scripts.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditModeTests/EditModeTests.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditModeTests/EditModeTests.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/PlayModeTests/PlayModeTests.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/PlayModeTests/PlayModeTests.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VertexColor.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VertexColor.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/skybox_countryside2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/skybox_countryside2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/EditMode/TestCoverageResults_0000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/EditMode/TestCoverageResults_0000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/PlayMode/TestCoverageResults_0000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/PlayMode/TestCoverageResults_0000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/PlayMode/TestCoverageResults_0001.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/MindScapeVR-opencov/PlayMode/TestCoverageResults_0001.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_AudioGenClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_AudioGenClient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_CameraController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_FreeSceneCamera.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_FreeSceneCamera.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_Hunyuan3DClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_Hunyuan3DClient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_HunyuanWorldClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_HunyuanWorldClient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_InteractionController.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_InteractionController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LevelManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LevelManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LevelSaveSystem.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LevelSaveSystem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LookAtCamera.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_LookAtCamera.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_MainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_MainMenu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_MindfulnessAudioManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_MindfulnessAudioManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_RandomizeAudio.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_RandomizeAudio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_RotatingCamera.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_RotatingCamera.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_SceneLightUIController.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_SceneLightUIController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_StateManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Scripts_StateManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Summary.json" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Summary.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Summary.md" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Summary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/Summary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/Summary.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_combined.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_combined.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_linecoverage.png" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_linecoverage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_linecoverage.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_linecoverage.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_blue.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_blue.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_brightgreen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_brightgreen.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_green.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_green.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_lightgrey.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_lightgrey.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_orange.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_orange.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_red.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_red.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_yellow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_yellow.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_yellowgreen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/badge_shieldsio_linecoverage_yellowgreen.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/index.htm" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/index.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeCoverage/Report/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/CodeCoverage/Report/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +68,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioGenClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FreeCam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GeneratedObjectInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hunyuan3DClient.cs" root0="FORCE_HIGHLIGHTING" />
@@ -38,6 +80,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RandomizeAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLightUIController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/PlayModeTests/AudioGenClientTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/PlayModeTests/Hunyuan3DClientTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VertexColor.shader" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -55,7 +99,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tests&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;refactor&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -159,6 +203,12 @@
       <workItem from="1765730338328" duration="782000" />
       <workItem from="1765755269976" duration="5773000" />
       <workItem from="1766002250645" duration="2000" />
+      <workItem from="1766167124581" duration="4557000" />
+      <workItem from="1766417613094" duration="7000" />
+      <workItem from="1766417817419" duration="609000" />
+      <workItem from="1766612475761" duration="4537000" />
+      <workItem from="1766622677391" duration="2911000" />
+      <workItem from="1767296057199" duration="1775000" />
     </task>
     <servers />
   </component>

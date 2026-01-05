@@ -13,7 +13,7 @@ Shader "Custom/VertexColorVR"
             "RenderType"="Opaque" "RenderPipeline"="UniversalPipeline"
         }
         LOD 100
-        Cull Off
+        Cull Front
 
         Pass
         {
