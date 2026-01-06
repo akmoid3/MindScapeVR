@@ -17,10 +17,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<GameObject> audioInSceneList = new List<GameObject>();
     [SerializeField] private InteractionController interactionController;
 
+    
+    [SerializeField] private Camera transitionCamera;
+    
     private Coroutine transitionRoutine;
 
     private void Start()
     {
+        transitionCamera.gameObject.SetActive(false);
         speechManager = speech != null ? speech.GetComponent<MindfulnessAudioManager>() : null;
 
         StateManager.Instance.OnStateChanged += HandleStateChange;
@@ -129,19 +133,36 @@ public class LevelManager : MonoBehaviour
         if (cam != null) cam.enabled = true;
     }
 
+    private void DisableAllUI()
+    {
+        if (editorUI != null) editorUI.SetActive(false);
+        if (mainMenuButtonsUI != null) mainMenuButtonsUI.SetActive(false);
+        // Non disattivare exitPlayModeButton se stai andando in Playing mode
+    }
+    
     private IEnumerator TransitionToVR()
     {
-        DisableDesktopCamerasImmediately();
+        if (transitionCamera != null)
+        {
+            transitionCamera.gameObject.SetActive(true);
+            transitionCamera.enabled = true;
+            transitionCamera.depth = 100;
+        }
 
+        DisableDesktopCamerasImmediately();
         if (playerObject != null) playerObject.SetActive(false);
 
-        yield return null;
+        yield return new WaitForSeconds(0.3f);
 
         yield return SwitchToVRMode();
 
-        yield return null;
+        yield return new WaitForSeconds(0.5f);
 
         if (playerObject != null) playerObject.SetActive(true);
+
+        yield return new WaitForEndOfFrame();
+        if (transitionCamera != null)
+            transitionCamera.gameObject.SetActive(false);
     }
 
     private IEnumerator TransitionToDesktop(bool editingMode)

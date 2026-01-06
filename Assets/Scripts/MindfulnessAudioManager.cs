@@ -6,7 +6,7 @@ using UnityEngine;
 public class MindfulnessAudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> audioClips;
-    [SerializeField] private float timeBetweenClips = 10.0f;
+    [SerializeField] private float timeBetweenClips = 40.0f;
 
     private AudioSource audioSource;
     private Coroutine speechCoroutine;
@@ -52,6 +52,7 @@ public class MindfulnessAudioManager : MonoBehaviour
 
     public IEnumerator StartSpeechCoroutine()
     {
+        yield return new WaitForSeconds(5.0f);
         foreach (AudioClip clip in audioClips)
         {
             if (clip == null) continue;

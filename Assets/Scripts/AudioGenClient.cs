@@ -11,7 +11,6 @@ public class AudioGenClient : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private string serverUrl = "http://localhost:8081";
-    [SerializeField] private bool saveToFile = true;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button generateButton;
     [SerializeField] private TMP_Text buttonText;

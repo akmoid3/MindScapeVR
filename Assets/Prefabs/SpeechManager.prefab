@@ -60,4 +60,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 60350feffeff07e468b3330e118e30a4, type: 3}
   - {fileID: 8300000, guid: 99823c4b5ab0fad47bc6dc41cb7dd0b1, type: 3}
   - {fileID: 8300000, guid: 18d969552de12004d92542fc3942667e, type: 3}
-  timeBetweenClips: 10
+  timeBetweenClips: 40
