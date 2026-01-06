@@ -133,13 +133,7 @@ public class LevelManager : MonoBehaviour
         if (cam != null) cam.enabled = true;
     }
 
-    private void DisableAllUI()
-    {
-        if (editorUI != null) editorUI.SetActive(false);
-        if (mainMenuButtonsUI != null) mainMenuButtonsUI.SetActive(false);
-        // Non disattivare exitPlayModeButton se stai andando in Playing mode
-    }
-    
+
     private IEnumerator TransitionToVR()
     {
         if (transitionCamera != null)
