@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &412736085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,8 +470,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1779,7 +1779,7 @@ PrefabInstance:
       objectReference: {fileID: 1249617917}
     - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
       propertyPath: serverUrl
-      value: http://195.26.233.55:46661
+      value: http://195.26.233.55:52382
       objectReference: {fileID: 0}
     - target: {fileID: 1644966984980111018, guid: c4b79fd1109da694083bf6c4d7b5b699, type: 3}
       propertyPath: inputField
@@ -1967,9 +1967,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5063278954882918921}
     - target: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
+      propertyPath: plane
+      value: 
+      objectReference: {fileID: 1249617917}
+    - target: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
       propertyPath: lightUIController
       value: 
       objectReference: {fileID: 1941017690}
+    - target: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
+      propertyPath: hunyuanWorldClient
+      value: 
+      objectReference: {fileID: 1418503994}
+    - target: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
+      propertyPath: environmentMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b7c4df943ed8d984ca71186bbe0ac513, type: 2}
     - target: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
       propertyPath: sceneDirectionalLight
       value: 
@@ -2064,7 +2076,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9058722962833152793, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
   m_PrefabInstance: {fileID: 1941017686}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941017689}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6128df7a9f8fd56469cedb113e0ed9fc, type: 3}
@@ -2075,23 +2087,29 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 334812204279698441, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
   m_PrefabInstance: {fileID: 1941017686}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941017689}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc17bf14bca89543be8dbbee8ec9db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
---- !u!1 &1941017689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1878145721315171505, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
+--- !u!114 &1941017689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7387703231826184390, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
   m_PrefabInstance: {fileID: 1941017686}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb35ceab47616a4a94f15f682ccdba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSaveSystem
 --- !u!114 &1941017690 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4927479832127478372, guid: 2966f8fe9fce2d241a6a0417775df48b, type: 3}
   m_PrefabInstance: {fileID: 1941017686}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941017689}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b0b5dc42a867d84da3c9f95a2665b62, type: 3}
@@ -3033,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: serverUrl
-      value: http://195.26.233.55:46659
+      value: http://195.26.233.55:52380
       objectReference: {fileID: 0}
     - target: {fileID: 8275185588088100484, guid: d62a7c900d2d308429b3f2c21cd61355, type: 3}
       propertyPath: inputField
@@ -3854,7 +3872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7920123016975615381, guid: 94048a4375c8071449b565cce14926f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7920123016975615381, guid: 94048a4375c8071449b565cce14926f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3862,7 +3880,15 @@ PrefabInstance:
       objectReference: {fileID: 1941017689}
     - target: {fileID: 7920123016975615381, guid: 94048a4375c8071449b565cce14926f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SaveScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920123016975615381, guid: 94048a4375c8071449b565cce14926f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSaveSystem, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920123016975615381, guid: 94048a4375c8071449b565cce14926f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7941605592245110423, guid: 94048a4375c8071449b565cce14926f8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4143,7 +4169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: serverUrl
-      value: http://195.26.233.55:46660
+      value: http://195.26.233.55:52381
       objectReference: {fileID: 0}
     - target: {fileID: 674538617723976173, guid: e5f5b1545552e384782e6fd901505da4, type: 3}
       propertyPath: inputField

@@ -34,7 +34,7 @@ public class HunyuanWorldClient : MonoBehaviour
     private Material originalSkybox;
     private string currentButtonState = "Generate";
 
-    [SerializeField] private GameObject sceneObj;
+    [SerializeField] public GameObject sceneObj;
     [SerializeField] private GameObject planeObj;
     [SerializeField] private GameObject deleteSceneButton;
 
@@ -152,7 +152,7 @@ public class HunyuanWorldClient : MonoBehaviour
             www.uploadHandler = new UploadHandlerRaw(body);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
-            www.timeout = 600;
+            www.timeout = 1000;
 
             yield return www.SendWebRequest();
 
@@ -196,6 +196,12 @@ public class HunyuanWorldClient : MonoBehaviour
 
             Texture2D skyboxTexture = DownloadHandlerTexture.GetContent(www);
 
+            string folderPath = Path. Combine(Application. persistentDataPath, "Scenes");
+            Directory.CreateDirectory(folderPath);
+            string skyboxFilePath = Path.Combine(folderPath, $"{jobId}_skybox.png");
+            File.WriteAllBytes(skyboxFilePath, skyboxTexture.EncodeToPNG());
+            Debug.Log($"Skybox saved to: {skyboxFilePath}");
+
             if (skyboxMaterial != null)
             {
                 skyboxMaterial.SetTexture("_MainTex", skyboxTexture);
@@ -235,8 +241,8 @@ public class HunyuanWorldClient : MonoBehaviour
             string filePath = Path.Combine(folderPath, $"{jobId}_mesh.glb");
             File.WriteAllBytes(filePath, www.downloadHandler.data);
 
-            GameObject container = new GameObject($"Scene_{jobId}");
-
+            GameObject container = new GameObject($"{jobId}");
+            container.tag = "Environment";
             container.transform.position = Vector3.zero;
             container.transform.rotation = Quaternion.Euler(270f, 0f, 0f);
             container.transform.localScale = new Vector3(15f, 15f, 15f);

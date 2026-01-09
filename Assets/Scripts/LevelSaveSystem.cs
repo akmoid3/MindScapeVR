@@ -14,14 +14,18 @@ public class LevelSaveSystem : MonoBehaviour
     [SerializeField] private Transform modelParent;
     [SerializeField] private GameObject audioPrefab;
     [SerializeField] private Light sceneDirectionalLight; 
-    [SerializeField] private SceneLightUIController lightUIController; 
-    
+    [SerializeField] private SceneLightUIController lightUIController;
+    [SerializeField] private Material environmentMaterial;
+    [SerializeField] private GameObject plane;
+    [SerializeField] private HunyuanWorldClient hunyuanWorldClient;
     [Serializable]
     public class SceneData
     {
         public List<ObjectData> objects = new List<ObjectData>();
         public float lightIntensity = 1.0f;
         public float[] lightRotation;
+        public string environmentName;
+
     }
 
     [Serializable]
@@ -34,6 +38,8 @@ public class LevelSaveSystem : MonoBehaviour
         public float[] scale;
         public bool isLooping;
     }
+
+    
 
     private void Start()
     {
@@ -70,6 +76,10 @@ public class LevelSaveSystem : MonoBehaviour
                 sceneDirectionalLight.transform.rotation.w
             };
         }
+        
+        GameObject environment = GameObject.FindGameObjectWithTag("Environment");
+        if(environment != null)
+            data.environmentName = environment.name;
         
         foreach (var obj in generatedObjects)
         {
@@ -118,6 +128,9 @@ public class LevelSaveSystem : MonoBehaviour
         GeneratedObjectInfo[] oldObjects = FindObjectsOfType<GeneratedObjectInfo>();
         foreach (var old in oldObjects) Destroy(old.gameObject);
 
+        GameObject oldEnvironment = GameObject.FindGameObjectWithTag("Environment");
+        if (oldEnvironment != null) Destroy(oldEnvironment);
+
         if (levelManager != null) levelManager.ClearAudioList();
 
         yield return null; 
@@ -138,6 +151,16 @@ public class LevelSaveSystem : MonoBehaviour
             }
         }
 
+        if (!string.IsNullOrEmpty(data.environmentName))
+        {
+            if(plane)
+            {
+                plane.SetActive(false);
+            }
+            yield return StartCoroutine(LoadEnvironment(data.environmentName));
+        }
+        
+
         foreach (var objData in data.objects)
         {
             if (objData.type == "Model")
@@ -147,6 +170,103 @@ public class LevelSaveSystem : MonoBehaviour
         }
 
         Debug.Log("Caricamento completato.");
+    }
+    
+    private IEnumerator LoadEnvironment(string jobId)
+    {
+        yield return StartCoroutine(LoadSkybox(jobId));
+
+        yield return StartCoroutine(LoadEnvironmentMesh(jobId));
+    }
+    
+    private IEnumerator LoadSkybox(string jobId)
+    {
+        string folderPath = Path.Combine(Application.persistentDataPath, "Scenes");
+        string filePath = Path. Combine(folderPath, $"{jobId}_skybox.png");
+
+        if (!File.Exists(filePath))
+        {
+            Debug. LogWarning($"File skybox non trovato:  {filePath}");
+            yield break;
+        }
+
+        byte[] fileData = File.ReadAllBytes(filePath);
+        Texture2D skyboxTexture = new Texture2D(2, 2);
+        
+        if (skyboxTexture.LoadImage(fileData))
+        {
+                Material skyboxMaterial = new Material(Shader.Find("Skybox/Panoramic"));
+                skyboxMaterial.SetFloat("_Exposure", 1.0f);
+                skyboxMaterial.SetFloat("_Rotation", 0f);
+                skyboxMaterial.SetTexture("_MainTex", skyboxTexture);
+                RenderSettings.skybox = skyboxMaterial;
+                DynamicGI.UpdateEnvironment();
+                Debug.Log($"Skybox caricata:  {jobId}_skybox.png");
+        }
+        else
+        {
+            Debug.LogError($"Errore nel caricamento della skybox: {jobId}");
+        }
+
+        yield return null;
+    }
+
+    private IEnumerator LoadEnvironmentMesh(string jobId)
+    {
+        string folderPath = Path.Combine(Application.persistentDataPath, "Scenes");
+        string filePath = Path. Combine(folderPath, $"{jobId}_mesh.glb");
+
+        if (!File.Exists(filePath))
+        {
+            Debug. LogWarning($"File environment mesh non trovato: {filePath}");
+            yield break;
+        }
+
+        GameObject container = new GameObject(jobId);
+        container.tag = "Environment";
+
+        if (modelParent != null) container.transform.SetParent(modelParent);
+
+        container.transform.position = Vector3.zero;
+        container.transform. rotation = Quaternion. Euler(270f, 0f, 0f);
+        container.transform. localScale = new Vector3(15f, 15f, 15f);
+
+        GltfAsset gltfAsset = container.AddComponent<GltfAsset>();
+        
+        var task = gltfAsset.Load(filePath);
+        yield return new WaitUntil(() => task.IsCompleted);
+
+        if (task.Result)
+        {
+            Debug.Log($"Environment mesh caricata: {jobId}_mesh.glb");
+
+            if (environmentMaterial != null)
+            {
+                ApplyMaterialToScene(container);
+            }
+            if(hunyuanWorldClient)
+                hunyuanWorldClient.sceneObj = container;
+        }
+        else
+        {
+            Debug.LogError($"Errore nel caricamento dell'environment mesh: {jobId}");
+            Destroy(container);
+        }
+    }
+
+    private void ApplyMaterialToScene(GameObject sceneRoot)
+    {
+        MeshRenderer[] renderers = sceneRoot.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in renderers)
+        {
+            Material[] materials = new Material[renderer.sharedMaterials. Length];
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = environmentMaterial;
+            }
+            renderer.sharedMaterials = materials;
+        }
     }
 
     private IEnumerator LoadModel(ObjectData data)
