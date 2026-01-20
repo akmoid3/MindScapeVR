@@ -58,6 +58,9 @@ public class Hunyuan3DClient : MonoBehaviour
         }
 
         SetButtonState(false);
+        
+        if (ConfigManager.Instance)
+            serverUrl = ConfigManager.Instance.Config.hunyuan3DServerUrl;
     }
 
     public void GenerateModel()

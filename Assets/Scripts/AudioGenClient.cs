@@ -54,6 +54,9 @@ public class AudioGenClient : MonoBehaviour
         }
 
         SetButtonState(false);
+
+        if (ConfigManager.Instance)
+            serverUrl = ConfigManager.Instance.Config.audiogenServerUrl;
     }
 
     public void GenerateAudio(float duration = 5.0f)

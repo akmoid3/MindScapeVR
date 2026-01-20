@@ -152,7 +152,6 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if (playerObject != null) playerObject.SetActive(true);
 
         yield return new WaitForEndOfFrame();
         if (transitionCamera != null)
@@ -195,11 +194,15 @@ public class LevelManager : MonoBehaviour
         {
             XRGeneralSettings.Instance.Manager.StartSubsystems();
             Debug.Log("Modalità VR Attiva");
+            if (playerObject != null) playerObject.SetActive(true);
+            
         }
         else
         {
             Debug.LogError("Errore: Visore non rilevato o inizializzazione fallita.");
             EnableFreeCam();
+            if (playerObject != null) playerObject.SetActive(false);
+            
         }
     }
 

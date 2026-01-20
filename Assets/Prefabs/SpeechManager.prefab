@@ -45,19 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MindfulnessAudioManager
   audioClips:
-  - {fileID: 8300000, guid: 448d93f42b1908a4aa60934d8531c919, type: 3}
-  - {fileID: 8300000, guid: bf126dd76c98d374a95b65f11726201f, type: 3}
-  - {fileID: 8300000, guid: 8e113047ef8f23e43be3a7a89cdfdb9c, type: 3}
-  - {fileID: 8300000, guid: 54f383fefa05bff45b85b4a2c7de6518, type: 3}
-  - {fileID: 8300000, guid: e3664082b9196314d920501c51b0feac, type: 3}
-  - {fileID: 8300000, guid: 97f38d819d02cb743930429970246078, type: 3}
-  - {fileID: 8300000, guid: 211ebff74d1e2b440956af063fa85f66, type: 3}
-  - {fileID: 8300000, guid: cdee80efc2192434083de7c12e21fc65, type: 3}
-  - {fileID: 8300000, guid: e2f1bd90f105cdf4684bc3945205590e, type: 3}
-  - {fileID: 8300000, guid: 862014ce530bf944caada7ae720bd1ef, type: 3}
-  - {fileID: 8300000, guid: 609fa96a383d3f04d8efa9160b5e93b3, type: 3}
-  - {fileID: 8300000, guid: 845677ea3724a884e9bc26a54a16090f, type: 3}
-  - {fileID: 8300000, guid: 60350feffeff07e468b3330e118e30a4, type: 3}
-  - {fileID: 8300000, guid: 99823c4b5ab0fad47bc6dc41cb7dd0b1, type: 3}
-  - {fileID: 8300000, guid: 18d969552de12004d92542fc3942667e, type: 3}
-  timeBetweenClips: 40
+  - {fileID: 8300000, guid: 3c7d8342ba0cd084f80234100ca13342, type: 3}
+  timeBetweenClips: 5

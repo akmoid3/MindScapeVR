@@ -74,6 +74,9 @@ public class HunyuanWorldClient : MonoBehaviour
         }
 
         SetButtonState(false);
+        
+        if (ConfigManager.Instance)
+            serverUrl = ConfigManager.Instance.Config.hunyuanWorldServerUrl;
     }
 
     private void Update()

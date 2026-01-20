@@ -186,7 +186,7 @@ public class LevelSaveSystem : MonoBehaviour
 
         if (!File.Exists(filePath))
         {
-            Debug. LogWarning($"File skybox non trovato:  {filePath}");
+            Debug.LogWarning($"File skybox non trovato:  {filePath}");
             yield break;
         }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2026-01-20_20-42-51" tag="">
+  <assembly name="Scripts">
+    <class name="AudioGenClient" coveredlines="0" coverablelines="151" totallines="200" coveredbranches="0" totalbranches="0" />
+    <class name="ConfigManager" coveredlines="21" coverablelines="47" totallines="78" coveredbranches="0" totalbranches="0" />
+    <class name="FreeSceneCamera" coveredlines="0" coverablelines="56" totallines="107" coveredbranches="0" totalbranches="0" />
+    <class name="Hunyuan3DClient" coveredlines="54" coverablelines="163" totallines="230" coveredbranches="0" totalbranches="0" />
+    <class name="HunyuanWorldClient" coveredlines="0" coverablelines="243" totallines="312" coveredbranches="0" totalbranches="0" />
+    <class name="InteractionController" coveredlines="0" coverablelines="158" totallines="259" coveredbranches="0" totalbranches="0" />
+    <class name="LevelManager" coveredlines="0" coverablelines="227" totallines="277" coveredbranches="0" totalbranches="0" />
+    <class name="LevelSaveSystem" coveredlines="0" coverablelines="259" totallines="348" coveredbranches="0" totalbranches="0" />
+    <class name="LookAtCamera" coveredlines="0" coverablelines="7" totallines="18" coveredbranches="0" totalbranches="0" />
+    <class name="MainMenu" coveredlines="0" coverablelines="19" totallines="41" coveredbranches="0" totalbranches="0" />
+    <class name="MindfulnessAudioManager" coveredlines="0" coverablelines="46" totallines="70" coveredbranches="0" totalbranches="0" />
+    <class name="RandomizeAudio" coveredlines="0" coverablelines="37" totallines="63" coveredbranches="0" totalbranches="0" />
+    <class name="RotatingCamera" coveredlines="0" coverablelines="6" totallines="14" coveredbranches="0" totalbranches="0" />
+    <class name="SceneLightUIController" coveredlines="0" coverablelines="115" totallines="178" coveredbranches="0" totalbranches="0" />
+    <class name="StateManager" coveredlines="0" coverablelines="17" totallines="39" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>
