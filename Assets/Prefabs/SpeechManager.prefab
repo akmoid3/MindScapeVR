@@ -45,5 +45,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MindfulnessAudioManager
   audioClips:
-  - {fileID: 8300000, guid: 3c7d8342ba0cd084f80234100ca13342, type: 3}
-  timeBetweenClips: 5
+  - {fileID: 8300000, guid: ac45c9f944f251948b17433691296be6, type: 3}
+  - {fileID: 8300000, guid: a28b289247cc09f40a852ab12c243bf9, type: 3}
+  - {fileID: 8300000, guid: c2341d23426ac96408a46194f8a339cf, type: 3}
+  - {fileID: 8300000, guid: 33e8298816b19ab438ba3c8bf22c4786, type: 3}
+  - {fileID: 8300000, guid: 0938da9462f70b04db727f7111d6bfe8, type: 3}
+  - {fileID: 8300000, guid: 32169bdd28fe1c84495c84a1208a8f7b, type: 3}
+  - {fileID: 8300000, guid: aefb50e7f85417042859ea8d3ab12c41, type: 3}
+  - {fileID: 8300000, guid: 4a3bab7fb33847d4f8b58c900fb7eda6, type: 3}
+  - {fileID: 8300000, guid: d7991486f313ae64c89634ccbc1cfb21, type: 3}
+  - {fileID: 8300000, guid: c60ecb9be04d976448e0c2919c8d5031, type: 3}
+  - {fileID: 8300000, guid: 67d6247fad9d68949904945d48100bde, type: 3}
+  - {fileID: 8300000, guid: d6d1c089eb937e944b7183885e975b89, type: 3}
+  - {fileID: 8300000, guid: 6895270348ec65f409c18b188fb06319, type: 3}
+  - {fileID: 8300000, guid: a013151bd58977241b3feccd2f931f64, type: 3}
+  - {fileID: 8300000, guid: 30cbff139a3f5ea448cc99197c3e235b, type: 3}
+  - {fileID: 8300000, guid: 0166d9d6028fdab4fb80c36c219177f2, type: 3}
+  - {fileID: 8300000, guid: f904af4bd7b7e5f449c90dc60ab21402, type: 3}
+  - {fileID: 8300000, guid: 1d8366a71622bed45b8cac9c73467bcd, type: 3}
+  - {fileID: 8300000, guid: 1600c938b9ff7e646af97fc8791f9b28, type: 3}
+  - {fileID: 8300000, guid: af4d85f8309ab374f916c161b3655c37, type: 3}
+  - {fileID: 8300000, guid: 469e91f19895e8a48bb8b949baa3846b, type: 3}
+  - {fileID: 8300000, guid: 108dd1182eaeda847bc80206c6f888ec, type: 3}
+  - {fileID: 8300000, guid: 88c088adf0f193340a6143402cd7acc8, type: 3}
+  - {fileID: 8300000, guid: a5cee37458c352e49893c1051805578c, type: 3}
+  - {fileID: 8300000, guid: 20c0b8c7aaad1bc45b532c5f2f7dd657, type: 3}
+  - {fileID: 8300000, guid: 22eb66c3662e93d49b870007ca67d3a6, type: 3}
+  - {fileID: 8300000, guid: 7be4b9036f8478d4dafbc25bf63b77ba, type: 3}
+  - {fileID: 8300000, guid: d7154763fe1e66640b315c2ad508521c, type: 3}
+  timeBetweenClips: 0

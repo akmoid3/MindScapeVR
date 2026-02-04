@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 334812204279698441}
   - component: {fileID: 4927479832127478372}
   - component: {fileID: 7387703231826184390}
+  - component: {fileID: 5126897645416075811}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -56,6 +57,9 @@ MonoBehaviour:
   mainMenuButtonsUI: {fileID: 0}
   exitPlayModeButton: {fileID: 0}
   audioInSceneList: []
+  interactionController: {fileID: 0}
+  adjustHeightUI: {fileID: 0}
+  transitionCamera: {fileID: 0}
 --- !u!114 &334812204279698441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +119,22 @@ MonoBehaviour:
   levelManager: {fileID: 9058722962833152793}
   modelParent: {fileID: 0}
   audioPrefab: {fileID: 1106567387334408393, guid: 2718996c490761b4ab8f83b694f8a9c3, type: 3}
+  sceneDirectionalLight: {fileID: 0}
+  lightUIController: {fileID: 0}
+  environmentMaterial: {fileID: 0}
+  plane: {fileID: 0}
+  hunyuanWorldClient: {fileID: 0}
+--- !u!114 &5126897645416075811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878145721315171505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da028e1562b0ad84eb3b7a57512a3340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LockCameraHeight
+  cameraOffset: {fileID: 0}
+  step: 0.02

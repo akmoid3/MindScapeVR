@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject exitPlayModeButton;
     [SerializeField] private List<GameObject> audioInSceneList = new List<GameObject>();
     [SerializeField] private InteractionController interactionController;
+    [SerializeField] private GameObject adjustHeightUI;
+    
 
     
     [SerializeField] private Camera transitionCamera;
@@ -51,7 +53,7 @@ public class LevelManager : MonoBehaviour
                 editorUI.SetActive(true);
                 mainMenuButtonsUI.SetActive(false);
                 exitPlayModeButton.SetActive(false);
-
+                adjustHeightUI.SetActive(false);
                 speech.SetActive(false);
                 if (speechManager != null) speechManager.StopSpeech();
 
@@ -67,6 +69,7 @@ public class LevelManager : MonoBehaviour
                 editorUI.SetActive(false);
                 mainMenuButtonsUI.SetActive(false);
                 exitPlayModeButton.SetActive(true);
+                adjustHeightUI.SetActive(true);
 
                 speech.SetActive(true);
                 if (speechManager != null) speechManager.StartSpeech();
@@ -83,6 +86,7 @@ public class LevelManager : MonoBehaviour
                 editorUI.SetActive(false);
                 mainMenuButtonsUI.SetActive(true);
                 exitPlayModeButton.SetActive(false);
+                adjustHeightUI.SetActive(false);
 
                 speech.SetActive(false);
                 if (speechManager != null) speechManager.StopSpeech();
